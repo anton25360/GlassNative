@@ -5,6 +5,8 @@ import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 
 export default function TabTwoScreen() {
+  console.log('hey there');
+  
   return (
   //   <View style={styles.container}>
   //     <Text style={styles.title}>Tab Two</Text>
@@ -20,4 +22,5 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     color:'red'
-  }});
+  }
+});
