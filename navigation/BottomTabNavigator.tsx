@@ -66,7 +66,7 @@ function TabTwoNavigator() {
       <TabTwoStack.Screen
         name="TabTwoScreen"
         component={TabTwoScreen}
-        options={{ headerTitle: 'Favourites' , headerTitleStyle:{fontFamily:'productSans-bold', fontWeight:200}}}
+        options={{ headerTitle: 'Favourites' , headerTitleStyle:{fontFamily:'productSans-bold'}}}
       />
     </TabTwoStack.Navigator>
   );
