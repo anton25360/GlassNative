@@ -5,26 +5,23 @@ import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 
 export default function TabTwoScreen() {
-  console.log('hello');
+  console.log('favourites tab rendered');
   
   return (
-  //   <View style={styles.container}>
-  //     <Text style={styles.title}>Tab Two</Text>
-  //     <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-  //     <EditScreenInfo path="/screens/TabTwoScreen.tsx" />
-  //   </View>
-  <View style={styles.view}>
-    <Text style={styles.title}>You have no favourites!</Text>
+
+  <View style={styles.container}>
+    <Text style={styles.message}>You don't have any favourites!</Text>
   </View>
+
   );
 }
 
 const styles = StyleSheet.create({
-  title: {
-    fontSize: 15,
-    color:'grey',
+  message: {
+    fontSize: 17,
+    // color:'grey',
   },
-  view: {
+  container: {
     flex:1,
     justifyContent:'center',
     alignItems:'center'
