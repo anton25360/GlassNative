@@ -8,19 +8,10 @@ import SearchResults from '../components/SearchResults'
 
 export default class TabOneScreen extends Component {
  
-  //function component code
-  // return (
-    // <View style={styles.container}>
-    //   <SearchBar></SearchBar>
-    //   <Text>Hello!2</Text>
-    //   <SearchResults></SearchResults>
-    // </View>
-  // );
-
   render() {
     return (
       <View style={styles.container}>
-        <SearchBar></SearchBar>
+        <SearchBar ></SearchBar>
         <Text>Hello!2</Text>
         <SearchResults></SearchResults>
       </View>
@@ -33,7 +24,6 @@ const styles = StyleSheet.create({
     flex: 1,
     // alignItems: 'center',
     // justifyContent: 'center'
-    // height:'100pt'
   },
   title: {
     fontSize: 20,
