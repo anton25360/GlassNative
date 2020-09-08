@@ -8,7 +8,10 @@ import SearchResults from '../components/SearchResults'
 
 export default function TabOneScreen() {
 
-  const [search, setSearch] = useState()
+  //handleSearchInput logs user input to console so it can be used in parent screen
+  function handleSearchInput(input:string) {
+    console.log(input);
+  }
 
   
   return (

@@ -7,10 +7,12 @@ export default class App extends React.Component {
     search: '',
   };
 
-  updateSearch = (search) => {
+  updateSearch = (search:string) => {
     this.setState({ search });
     console.log(search);
-    
+    // this.props.onUserSearch(search);
+    // this.props.name('hello')
+
   };
 
   render() {
@@ -18,7 +20,7 @@ export default class App extends React.Component {
 
     return (
       <SearchBar
-        placeholder="Type Here..."
+        placeholder='Search...'
         onChangeText={this.updateSearch}
         value={search}
       />
