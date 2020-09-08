@@ -52,7 +52,7 @@ function TabOneNavigator() {
       <TabOneStack.Screen
         name="TabOneScreen"
         component={TabOneScreen}
-        options={{ headerTitle: 'Search' }}
+        options={{ headerTitle: 'Search' , headerTitleStyle:{fontFamily:'productSans-bold', fontSize:20}}}
       />
     </TabOneStack.Navigator>
   );
@@ -66,7 +66,7 @@ function TabTwoNavigator() {
       <TabTwoStack.Screen
         name="TabTwoScreen"
         component={TabTwoScreen}
-        options={{ headerTitle: 'Favourites' , headerTitleStyle:{fontFamily:'productSans-bold'}}}
+        options={{ headerTitle: 'Favourites' , headerTitleStyle:{fontFamily:'productSans-bold', fontSize:20}}}
       />
     </TabTwoStack.Navigator>
   );
