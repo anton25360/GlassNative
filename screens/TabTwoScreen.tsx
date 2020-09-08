@@ -22,12 +22,7 @@ export default function TabTwoScreen() {
 const styles = StyleSheet.create({
   title: {
     fontSize: 15,
-    // fontWeight: 'bold',
     color:'grey',
-    // textAlign: 'center', 
-    // flex:1,
-    // justifyContent:'center',
-    // alignItems:'center'
   },
   view: {
     flex:1,
