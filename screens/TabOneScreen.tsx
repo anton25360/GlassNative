@@ -24,9 +24,11 @@ export default class TabOneScreen extends Component {
       <View style={styles.container}>
 
         <SearchBar
+          // containerStyle={{backgroundColor:'transparent', }}
           placeholder='eg: Mojito'
           onChangeText={this.updateSearch}
           value={search}
+          // lightTheme={true}
         />
 
         <Text style={styles.title}>{search}</Text>
@@ -39,10 +41,8 @@ export default class TabOneScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // alignItems: 'center',
-    // justifyContent: 'center'
-    borderColor:'red',
-    borderWidth:2
+    borderColor: 'red',
+    // borderWidth: 2
   },
   title: {
     fontSize: 20,
