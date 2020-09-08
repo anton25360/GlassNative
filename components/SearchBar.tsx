@@ -20,7 +20,7 @@ export default class App extends React.Component {
 
     return (
       <SearchBar
-        placeholder='Search...'
+        placeholder='eg: Mojito'
         onChangeText={this.updateSearch}
         value={search}
       />
