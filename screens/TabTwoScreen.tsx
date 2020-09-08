@@ -1,7 +1,5 @@
 import * as React from 'react';
 import { StyleSheet } from 'react-native';
-
-import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 
 export default function TabTwoScreen() {
@@ -19,6 +17,7 @@ export default function TabTwoScreen() {
 const styles = StyleSheet.create({
   message: {
     fontSize: 17,
+    fontFamily:'productSans-regular'
     // color:'grey',
   },
   container: {

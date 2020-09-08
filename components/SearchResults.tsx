@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Text, View } from '../components/Themed';
+import { MonoText } from './StyledText';
 
 // var hello = this.props.searchValue
 export default class App extends React.Component {
