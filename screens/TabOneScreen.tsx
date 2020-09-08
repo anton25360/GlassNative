@@ -1,33 +1,39 @@
-import React, {useState} from 'react';
+import React, {useState, Component} from 'react';
 import { StyleSheet } from 'react-native';
-// import { SearchBar } from 'react-native-elements';
-// import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
+
 import SearchBar from '../components/SearchBar'
 import SearchResults from '../components/SearchResults'
+// import SearchScreen from '../components/SearchScreen'
 
-export default function TabOneScreen() {
+export default class TabOneScreen extends Component {
+ 
+  //function component code
+  // return (
+    // <View style={styles.container}>
+    //   <SearchBar></SearchBar>
+    //   <Text>Hello!2</Text>
+    //   <SearchResults></SearchResults>
+    // </View>
+  // );
 
-  //handleSearchInput logs user input to console so it can be used in parent screen
-  function handleSearchInput(input:string) {
-    console.log(input);
-  }
-
-  
-  return (
-    <View style={styles.container}>
-      <SearchBar></SearchBar>
-      <Text>Hello!2</Text>
-      <SearchResults></SearchResults>
-    </View>
-  );
+  render() {
+    return (
+      <View style={styles.container}>
+        <SearchBar></SearchBar>
+        <Text>Hello!2</Text>
+        <SearchResults></SearchResults>
+      </View>
+    )
+}
 }
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
+    flex: 1,
     // alignItems: 'center',
     // justifyContent: 'center'
+    // height:'100pt'
   },
   title: {
     fontSize: 20,
