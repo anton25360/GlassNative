@@ -3,11 +3,8 @@ import { StyleSheet } from 'react-native';
 import { Text, View } from '../components/Themed';
 import { SearchBar } from 'react-native-elements';
 
-// import SearchBar from '../components/SearchBar'
+//custom components
 import SearchResults from '../components/SearchResults'
-
-
-
 
 //start render
 export default class TabOneScreen extends Component {
@@ -15,11 +12,8 @@ export default class TabOneScreen extends Component {
     search: '',
   };
 
-  updateSearch = (search:string) => {
+  updateSearch = (search: string) => {
     this.setState({ search });
-    console.log(search);
-    // this.props.onUserSearch(search);
-    // this.props.name('hello')
 
   };
 
@@ -28,8 +22,6 @@ export default class TabOneScreen extends Component {
 
     return (
       <View style={styles.container}>
-        {/* <SearchBar getSearch={printThis} ></SearchBar> */}
-
 
         <SearchBar
           placeholder='eg: Mojito'
@@ -37,38 +29,20 @@ export default class TabOneScreen extends Component {
           value={search}
         />
 
-
-
-    <Text>{search}</Text>
+        <Text style={styles.title}>{search}</Text>
         <SearchResults></SearchResults>
       </View>
     )
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     // alignItems: 'center',
     // justifyContent: 'center'
+    borderColor:'red',
+    borderWidth:2
   },
   title: {
     fontSize: 20,
