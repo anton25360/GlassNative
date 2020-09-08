@@ -15,9 +15,8 @@ export default function useCachedResources() {
         // Load fonts
         await Font.loadAsync({
           ...Ionicons.font,
-          'productSans-regular': require('./assets/fonts/ProductSans-Regular.ttf'),
-          'productSans-bold': require('./assets/fonts/ProductSans-Bold.ttf')
-
+          'productSans-regular': require('../assets/fonts/ProductSans-Regular.ttf'),
+          'productSans-bold': require('../assets/fonts/ProductSans-Bold.ttf')
         });
       } catch (e) {
         // We might want to provide this error information to an error reporting service
