@@ -17,8 +17,7 @@ let getData = (input: string) => {
     })
     .then(function (data) {
       var result = data.drinks[0] //gets 1st result
-      console.log(result);
-
+      console.log(result.strAlcoholic);
     })
 }
 
@@ -41,15 +40,28 @@ export default class TabOneScreen extends Component {
       <View style={styles.container}>
 
         <SearchBar
-          // containerStyle={{backgroundColor:'transparent', }}
           placeholder='eg: Mojito'
           onChangeText={this.updateSearch}
           value={search}
-        // lightTheme={true}
         />
 
-        <Text style={styles.title}>{search}</Text>
-        <SearchResults></SearchResults>
+        <View style={styles.dataContainer}>
+          {/* drink name */}
+          <Text style={styles.title}>{search}</Text>
+          <Text>Alcoholic Drink</Text>
+
+          {/* ingrdients */}
+          <Text>INGREDIENTS</Text>
+          <Text>1 sugar</Text>
+          <Text>2 lime</Text>
+          <Text>soda water</Text>
+
+          {/* instrictions */}
+          <Text>INSTRUCTIONS</Text>
+          <Text>LALALA</Text>
+          <Text>LALALAL</Text>
+          <Text>ALLALA</Text>
+        </View>
       </View>
     )
   }
@@ -57,13 +69,19 @@ export default class TabOneScreen extends Component {
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1, //fullscreen
+    // textAlign: 'center',
+    // alignItems: 'center',
+  },
+  dataContainer: {
     flex: 1,
-    borderColor: 'red',
-    // borderWidth: 2
+    alignItems: 'center',
+
   },
   title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    // fontFamily: 'productSans-regular',
+    fontSize: 40,
+    // fontWeight: 'bold',
+    fontFamily: 'productSans-bold',
+    marginTop: 40
   }
 });
