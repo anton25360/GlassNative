@@ -41,9 +41,10 @@ export default class TabOneScreen extends Component {
           value={search}
         />
 
+        {/* drink data goes here */}
         <View style={styles.dataContainer}>
           {/* drink name */}
-          <Text style={styles.title}>{'Mojito'}</Text>
+          <Text style={styles.title}>{drinkData.strDrink}</Text>
           <Text style={styles.titleSub}>Alcoholic Drink</Text>
 
           {/* ingrdients */}
@@ -97,8 +98,8 @@ const styles = StyleSheet.create({
     // fontSize: 20,
     fontFamily: 'productSans-regular',
     // justifyContent: 'center',
-    textAlign:'center',
-    padding:30
+    textAlign: 'center',
+    padding: 30
     // marginTop: 20
   },
 
