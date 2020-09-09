@@ -7,18 +7,22 @@ import { SearchBar } from 'react-native-elements';
 import SearchResults from '../components/SearchResults'
 
 //get cocktail data
+let drinkData:object
 let getData = (input: string) => {
   console.log('calling api...');
-  console.log(input);
 
   fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + input)
     .then(function (data) {
       return data.json()
     })
     .then(function (data) {
-      var result = data.drinks[0] //gets 1st result
-      console.log(result.strAlcoholic);
+      drinkData = data.drinks[0] //gets 1st result, assigns it to global object
+      // console.log(result.strAlcoholic);
+      // return result
+      // thing = result
     })
+
+    
 }
 
 //start render
@@ -29,7 +33,11 @@ export default class TabOneScreen extends Component {
 
   updateSearch = (search: string) => {
     this.setState({ search });
-    getData(search)
+    getData(search) //gets data from api
+    // console.log(getData(search));
+    console.log(drinkData);
+    
+    
 
   };
 
