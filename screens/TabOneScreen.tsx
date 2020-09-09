@@ -15,60 +15,55 @@ let getData = (input: string) => {
     .then(function (data) {
       return data.json()
     })
-    .then(function (data){
+    .then(function (data) {
       var result = data.drinks[0] //gets 1st result
       console.log(result);
-      
-      
+
     })
-
-
-
-
-    }
+}
 
 //start render
 export default class TabOneScreen extends Component {
-    state = {
-      search: '',
-    };
+  state = {
+    search: '',
+  };
 
-    updateSearch = (search: string) => {
-      this.setState({ search });
-      getData(search)
+  updateSearch = (search: string) => {
+    this.setState({ search });
+    getData(search)
 
-    };
+  };
 
-    render() {
-      const { search } = this.state;
+  render() {
+    const { search } = this.state;
 
-      return (
-        <View style={styles.container}>
+    return (
+      <View style={styles.container}>
 
-          <SearchBar
-            // containerStyle={{backgroundColor:'transparent', }}
-            placeholder='eg: Mojito'
-            onChangeText={this.updateSearch}
-            value={search}
-          // lightTheme={true}
-          />
+        <SearchBar
+          // containerStyle={{backgroundColor:'transparent', }}
+          placeholder='eg: Mojito'
+          onChangeText={this.updateSearch}
+          value={search}
+        // lightTheme={true}
+        />
 
-          <Text style={styles.title}>{search}</Text>
-          <SearchResults></SearchResults>
-        </View>
-      )
-    }
+        <Text style={styles.title}>{search}</Text>
+        <SearchResults></SearchResults>
+      </View>
+    )
   }
+}
 
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      borderColor: 'red',
-      // borderWidth: 2
-    },
-    title: {
-      fontSize: 20,
-      fontWeight: 'bold',
-      // fontFamily: 'productSans-regular',
-    }
-  });
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    borderColor: 'red',
+    // borderWidth: 2
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    // fontFamily: 'productSans-regular',
+  }
+});
