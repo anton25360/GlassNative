@@ -3,11 +3,8 @@ import { StyleSheet } from 'react-native';
 import { Text, View } from '../components/Themed';
 import { SearchBar } from 'react-native-elements';
 
-//custom components
-import SearchResults from '../components/SearchResults'
-
 //get cocktail data
-let drinkData:object
+let drinkData: object
 let getData = (input: string) => {
   console.log('calling api...');
 
@@ -17,12 +14,7 @@ let getData = (input: string) => {
     })
     .then(function (data) {
       drinkData = data.drinks[0] //gets 1st result, assigns it to global object
-      // console.log(result.strAlcoholic);
-      // return result
-      // thing = result
     })
-
-    
 }
 
 //start render
@@ -34,11 +26,7 @@ export default class TabOneScreen extends Component {
   updateSearch = (search: string) => {
     this.setState({ search });
     getData(search) //gets data from api
-    // console.log(getData(search));
     console.log(drinkData);
-    
-    
-
   };
 
   render() {
@@ -55,7 +43,7 @@ export default class TabOneScreen extends Component {
 
         <View style={styles.dataContainer}>
           {/* drink name */}
-          <Text style={styles.title}>{'Mojito'}</Text> 
+          <Text style={styles.title}>{'Mojito'}</Text>
           <Text style={styles.titleSub}>Alcoholic Drink</Text>
 
           {/* ingrdients */}
@@ -85,19 +73,16 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 40,
-    // fontWeight: 'bold',
     fontFamily: 'productSans-bold',
     marginTop: 40
   },
   titleSub: {
     fontSize: 17,
-    // fontWeight: 'bold',
     fontFamily: 'productSans-regular',
     marginTop: 10
   },
   ingredients: {
     fontSize: 20,
-    // fontWeight: 'bold',
     fontFamily: 'productSans-bold',
     marginTop: 20
   }
