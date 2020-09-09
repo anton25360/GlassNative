@@ -45,7 +45,7 @@ export default class TabOneScreen extends Component {
         <View style={styles.dataContainer}>
           {/* drink name */}
           <Text style={styles.title}>{drinkData.strDrink}</Text>
-          <Text style={styles.titleSub}>Alcoholic Drink</Text>
+          <Text style={styles.titleSub}>{drinkData.strAlcoholic + ' ' + drinkData.strCategory}</Text>
 
           {/* ingrdients */}
           <Text style={styles.ingredientsTitle}>INGREDIENTS</Text>
@@ -58,7 +58,7 @@ export default class TabOneScreen extends Component {
           <Text style={styles.instructionsText}>{drinkData.strInstructions}</Text>
 
           {/* drink image */}
-          <Image style={styles.drinkImage} source={{uri:drinkData.strDrinkThumb}}></Image>
+          <Image style={styles.drinkImage} source={{ uri: drinkData.strDrinkThumb }}></Image>
         </View>
       </View>
     )
