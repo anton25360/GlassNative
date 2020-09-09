@@ -4,7 +4,7 @@ import { Text, View } from '../components/Themed';
 import { SearchBar } from 'react-native-elements';
 
 //get cocktail data
-let drinkData: object
+let drinkData: object = {}
 let getData = (input: string) => {
   console.log('calling api...');
 
@@ -47,16 +47,14 @@ export default class TabOneScreen extends Component {
           <Text style={styles.titleSub}>Alcoholic Drink</Text>
 
           {/* ingrdients */}
-          <Text style={styles.ingredients}>INGREDIENTS</Text>
+          <Text style={styles.ingredientsTitle}>INGREDIENTS</Text>
           <Text>1 sugar</Text>
           <Text>2 lime</Text>
           <Text>soda water</Text>
 
           {/* instrictions */}
-          <Text style={styles.ingredients}>INSTRUCTIONS</Text>
-          <Text>LALALA</Text>
-          <Text>LALALAL</Text>
-          <Text>ALLALA</Text>
+          <Text style={styles.instructionsTitle}>INSTRUCTIONS</Text>
+          <Text style={styles.instructionsText}>{drinkData.strInstructions}</Text>
         </View>
       </View>
     )
@@ -81,10 +79,27 @@ const styles = StyleSheet.create({
     fontFamily: 'productSans-regular',
     marginTop: 10
   },
-  ingredients: {
+
+  // ingredients
+  ingredientsTitle: {
     fontSize: 20,
     fontFamily: 'productSans-bold',
     marginTop: 20
-  }
+  },
+
+  //instructions
+  instructionsTitle: {
+    fontSize: 20,
+    fontFamily: 'productSans-bold',
+    marginTop: 20
+  },
+  instructionsText: {
+    // fontSize: 20,
+    fontFamily: 'productSans-regular',
+    // justifyContent: 'center',
+    textAlign:'center',
+    padding:30
+    // marginTop: 20
+  },
 
 });
