@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Image, StyleSheet } from "react-native";
+import { Image, StyleSheet, ScrollView } from "react-native";
 import { Text, View } from "../components/Themed";
 import { SearchBar } from "react-native-elements";
 
@@ -40,31 +40,35 @@ export default class TabOneScreen extends Component {
           value={search}
         />
 
-        {/* drink data goes here */}
+        {/* drink data goes here (container) */}
         <View style={styles.dataContainer}>
-          {/* drink name */}
-          <Text style={styles.title}>{drinkData.strDrink}</Text>
-          <Text style={styles.titleSub}>
-            {drinkData.strAlcoholic + " " + drinkData.strCategory}
-          </Text>
+          <ScrollView
+            contentContainerStyle={{ flexGrow: 1, alignItems: "center" }}
+          >
+            {/* drink name */}
+            <Text style={styles.title}>{drinkData.strDrink}</Text>
+            <Text style={styles.titleSub}>
+              {drinkData.strAlcoholic + " " + drinkData.strCategory}
+            </Text>
 
-          {/* ingrdients */}
-          <Text style={styles.ingredientsTitle}>INGREDIENTS</Text>
-          <Text>1 sugar</Text>
-          <Text>2 lime</Text>
-          <Text>soda water</Text>
+            {/* ingrdients */}
+            <Text style={styles.ingredientsTitle}>INGREDIENTS</Text>
+            <Text>1 sugar</Text>
+            <Text>2 lime</Text>
+            <Text>soda water</Text>
 
-          {/* instrictions */}
-          <Text style={styles.instructionsTitle}>INSTRUCTIONS</Text>
-          <Text style={styles.instructionsText}>
-            {drinkData.strInstructions}
-          </Text>
+            {/* instrictions */}
+            <Text style={styles.instructionsTitle}>INSTRUCTIONS</Text>
+            <Text style={styles.instructionsText}>
+              {drinkData.strInstructions}
+            </Text>
 
-          {/* drink image */}
-          <Image
-            style={styles.drinkImage}
-            source={{ uri: drinkData.strDrinkThumb }}
-          ></Image>
+            {/* drink image */}
+            <Image
+              style={styles.drinkImage}
+              source={{ uri: drinkData.strDrinkThumb }}
+            ></Image>
+          </ScrollView>
         </View>
       </View>
     );
