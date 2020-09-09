@@ -47,17 +47,17 @@ export default class TabOneScreen extends Component {
 
         <View style={styles.dataContainer}>
           {/* drink name */}
-          <Text style={styles.title}>{search}</Text>
-          <Text>Alcoholic Drink</Text>
+          <Text style={styles.title}>{'Mojito'}</Text> 
+          <Text style={styles.titleSub}>Alcoholic Drink</Text>
 
           {/* ingrdients */}
-          <Text>INGREDIENTS</Text>
+          <Text style={styles.ingredients}>INGREDIENTS</Text>
           <Text>1 sugar</Text>
           <Text>2 lime</Text>
           <Text>soda water</Text>
 
           {/* instrictions */}
-          <Text>INSTRUCTIONS</Text>
+          <Text style={styles.ingredients}>INSTRUCTIONS</Text>
           <Text>LALALA</Text>
           <Text>LALALAL</Text>
           <Text>ALLALA</Text>
@@ -70,18 +70,28 @@ export default class TabOneScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1, //fullscreen
-    // textAlign: 'center',
-    // alignItems: 'center',
   },
   dataContainer: {
     flex: 1,
     alignItems: 'center',
-
   },
   title: {
     fontSize: 40,
     // fontWeight: 'bold',
     fontFamily: 'productSans-bold',
     marginTop: 40
+  },
+  titleSub: {
+    fontSize: 17,
+    // fontWeight: 'bold',
+    fontFamily: 'productSans-regular',
+    marginTop: 10
+  },
+  ingredients: {
+    fontSize: 20,
+    // fontWeight: 'bold',
+    fontFamily: 'productSans-bold',
+    marginTop: 20
   }
+
 });
