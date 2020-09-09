@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
+import { Image, StyleSheet } from 'react-native';
 import { Text, View } from '../components/Themed';
 import { SearchBar } from 'react-native-elements';
 
@@ -56,6 +56,9 @@ export default class TabOneScreen extends Component {
           {/* instrictions */}
           <Text style={styles.instructionsTitle}>INSTRUCTIONS</Text>
           <Text style={styles.instructionsText}>{drinkData.strInstructions}</Text>
+
+          {/* drink image */}
+          <Image style={styles.drinkImage} source={{uri:drinkData.strDrinkThumb}}></Image>
         </View>
       </View>
     )
@@ -101,6 +104,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     padding: 30
     // marginTop: 20
+  },
+
+  //drink Image
+  drinkImage: {
+    width: 150,
+    height: 150,
   },
 
 });
