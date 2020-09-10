@@ -6,12 +6,8 @@ import { SearchBar } from "react-native-elements";
 //get cocktail data
 let drinkData: object = {};
 let ingredientsObject: object = {};
-// let count = 0
-// let ingredientsNameArray: any = [];
-// let ingredientsValueArray: any = [];
 
 let getDataFromAPI = (input: string) => {
-  console.log("calling api...");
 
   fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + input)
     .then(function (data) {
@@ -41,7 +37,6 @@ let getIngredients = () => {
     14: drinkData.strMeasure14 + drinkData.strIngredient14,
     15: drinkData.strMeasure15 + drinkData.strIngredient15,
   };
-  console.log(ingredientsObject);
 
   let count = 1;
   let ingredientsArray = [];
@@ -64,7 +59,7 @@ let getIngredients = () => {
     ingredientsArrayFinal.push(element);
   }
 
-  console.log(ingredientsArrayFinal);
+  return ingredientsArrayFinal
 };
 
 //start render
