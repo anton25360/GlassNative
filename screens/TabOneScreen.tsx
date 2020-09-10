@@ -15,7 +15,7 @@ let getDataFromAPI = (input: string) => {
     })
     .then(function (data) {
       drinkData = data.drinks[0]; //gets 1st result, assigns it to global object
-      getIngredients();
+      // getIngredients();
     });
 };
 
@@ -39,8 +39,8 @@ let getIngredients = () => {
   };
 
   let count = 1;
-  let ingredientsArray = [];
-  let ingredientsArrayFinal = [];
+  let ingredientsArray = [''];
+  let ingredientsArrayFinal = [''];
 
   //removes empty ingredients from object and puts existing ones in an array
   while (count != 16) {
@@ -54,11 +54,12 @@ let getIngredients = () => {
 
   //removes the word null from the array (eg: for ingredients like orange juice)
   for (let index = 0; index < ingredientsArray.length; index++) {
-    let element = ingredientsArray[index];
+    let element = ""+ingredientsArray[index];
     element = element.replace("null", "");
     ingredientsArrayFinal.push(element);
   }
 
+  console.log(ingredientsArrayFinal);
   return ingredientsArrayFinal
 };
 
@@ -87,16 +88,20 @@ export default class TabOneScreen extends Component {
   render() {
     const { search } = this.state;
 
-    const elements = ["one", "two", "three"];
-    let objj = ingredientsObject;
-    const element1 = <Text>{ingredientsObject[1]}</Text>;
-    const element2 = <Text>{ingredientsObject[2]}</Text>;
-    const element3 = <Text>{ingredientsObject[3]}</Text>;
-    const element4 = <Text>{ingredientsObject[4]}</Text>;
-    const element5 = <Text>{ingredientsObject[5]}</Text>;
-    const element6 = <Text>{ingredientsObject[6]}</Text>;
-    const element7 = <Text>{ingredientsObject[7]}</Text>;
-    const element8 = <Text>{ingredientsObject[8]}</Text>;
+    // const elements = ["one", "two", "three"];
+    // let objj = ingredientsObject;
+    // const element1 = <Text>{ingredientsObject[1]}</Text>;
+    // const element2 = <Text>{ingredientsObject[2]}</Text>;
+    // const element3 = <Text>{ingredientsObject[3]}</Text>;
+    // const element4 = <Text>{ingredientsObject[4]}</Text>;
+    // const element5 = <Text>{ingredientsObject[5]}</Text>;
+    // const element6 = <Text>{ingredientsObject[6]}</Text>;
+    // const element7 = <Text>{ingredientsObject[7]}</Text>;
+    // const element8 = <Text>{ingredientsObject[8]}</Text>;
+
+    // let array = getIngredients()
+;
+
 
     return (
       <View style={styles.container}>
@@ -125,14 +130,16 @@ export default class TabOneScreen extends Component {
             <Text>2 lime</Text>
             <Text>soda water</Text> */}
 
-            {element1}
+            {/* {element1}
             {element2}
             {element3}
             {element4}
             {element5}
             {element6}
             {element7}
-            {element8}
+            {element8} */}
+
+            {/* {items} */}
 
             {/* instrictions */}
             <Text style={styles.instructionsTitle}>INSTRUCTIONS</Text>
