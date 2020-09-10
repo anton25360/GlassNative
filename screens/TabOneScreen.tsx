@@ -17,68 +17,30 @@ let getDataFromAPI = (input: string) => {
     })
     .then(function (data) {
       drinkData = data.drinks[0]; //gets 1st result, assigns it to global object
-      console.log(drinkData);
-      
-      getIngredientNames();
+      getIngredients();
     });
 };
 
-let getIngredientNames = () => {
-  let ingredientsNameArray: any = [];
-  ingredientsNameArray.push(drinkData.strIngredient1);
-  ingredientsNameArray.push(drinkData.strIngredient2);
-  ingredientsNameArray.push(drinkData.strIngredient3);
-  ingredientsNameArray.push(drinkData.strIngredient4);
-  ingredientsNameArray.push(drinkData.strIngredient5);
-  ingredientsNameArray.push(drinkData.strIngredient6);
-  ingredientsNameArray.push(drinkData.strIngredient7);
-  ingredientsNameArray.push(drinkData.strIngredient8);
-  ingredientsNameArray.push(drinkData.strIngredient9);
-  ingredientsNameArray.push(drinkData.strIngredient10);
-  ingredientsNameArray.push(drinkData.strIngredient11);
-  ingredientsNameArray.push(drinkData.strIngredient12);
-  ingredientsNameArray.push(drinkData.strIngredient13);
-  ingredientsNameArray.push(drinkData.strIngredient14);
-  ingredientsNameArray.push(drinkData.strIngredient15);
+let getIngredients = () => {
 
-  // removes undefined
-  var ingredientsNameArrayFiltered = ingredientsNameArray.filter(function (
-    e: any
-  ) {
-    return e != null;
-  });
-
-  // return ingredientsNameArrayFiltered;
-  console.log(ingredientsNameArrayFiltered);
-};
-
-let getIngredientMeasurements = () => {
-  let ingredientsMeasurementArray: any = [];
-  ingredientsMeasurementArray.push(drinkData.strMeasure1);
-  ingredientsMeasurementArray.push(drinkData.strMeasure2);
-  ingredientsMeasurementArray.push(drinkData.strMeasure3);
-  ingredientsMeasurementArray.push(drinkData.strMeasure4);
-  ingredientsMeasurementArray.push(drinkData.strMeasure5);
-  ingredientsMeasurementArray.push(drinkData.strMeasure6);
-  ingredientsMeasurementArray.push(drinkData.strMeasure7);
-  ingredientsMeasurementArray.push(drinkData.strMeasure8);
-  ingredientsMeasurementArray.push(drinkData.strMeasure9);
-  ingredientsMeasurementArray.push(drinkData.strMeasure10);
-  ingredientsMeasurementArray.push(drinkData.strMeasure11);
-  ingredientsMeasurementArray.push(drinkData.strMeasure12);
-  ingredientsMeasurementArray.push(drinkData.strMeasure13);
-  ingredientsMeasurementArray.push(drinkData.strMeasure14);
-  ingredientsMeasurementArray.push(drinkData.strMeasure15);
-
-  // removes undefined
-  var ingredientsNameArrayFiltered = ingredientsNameArray.filter(function (
-    e: any
-  ) {
-    return e != null;
-  });
-
-  // return ingredientsNameArrayFiltered;
-  console.log(ingredientsNameArrayFiltered);
+  let ingredientsObject = {
+    1: drinkData.strMeasure1 + drinkData.strIngredient1,
+    2: drinkData.strMeasure2 + drinkData.strIngredient2,
+    3: drinkData.strMeasure3 + drinkData.strIngredient3,
+    4: drinkData.strMeasure4 + drinkData.strIngredient4,
+    5: drinkData.strMeasure5 + drinkData.strIngredient5,
+    6: drinkData.strMeasure6 + drinkData.strIngredient6,
+    7: drinkData.strMeasure7 + drinkData.strIngredient7,
+    8: drinkData.strMeasure8 + drinkData.strIngredient8,
+    9: drinkData.strMeasure9 + drinkData.strIngredient9,
+    10: drinkData.strMeasure10 + drinkData.strIngredient10,
+    11: drinkData.strMeasure11 + drinkData.strIngredient11,
+    12: drinkData.strMeasure12 + drinkData.strIngredient12,
+    13: drinkData.strMeasure13 + drinkData.strIngredient13,
+    14: drinkData.strMeasure14 + drinkData.strIngredient14,
+    15: drinkData.strMeasure15 + drinkData.strIngredient15,
+  };
+  console.log(ingredientsObject[1]);
 };
 
 //start render
