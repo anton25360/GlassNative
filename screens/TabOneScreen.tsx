@@ -6,7 +6,7 @@ import { SearchBar } from "react-native-elements";
 //get cocktail data
 let drinkData: object = {};
 // let ingredientsNameArray: any = [];
-let ingredientsValueArray: any = [];
+// let ingredientsValueArray: any = [];
 
 let getDataFromAPI = (input: string) => {
   console.log("calling api...");
@@ -17,6 +17,8 @@ let getDataFromAPI = (input: string) => {
     })
     .then(function (data) {
       drinkData = data.drinks[0]; //gets 1st result, assigns it to global object
+      console.log(drinkData);
+      
       getIngredientNames();
     });
 };
@@ -38,7 +40,6 @@ let getIngredientNames = () => {
   ingredientsNameArray.push(drinkData.strIngredient13);
   ingredientsNameArray.push(drinkData.strIngredient14);
   ingredientsNameArray.push(drinkData.strIngredient15);
-  console.log(ingredientsNameArray);
 
   // removes undefined
   var ingredientsNameArrayFiltered = ingredientsNameArray.filter(function (
@@ -47,7 +48,37 @@ let getIngredientNames = () => {
     return e != null;
   });
 
-  return ingredientsNameArrayFiltered;
+  // return ingredientsNameArrayFiltered;
+  console.log(ingredientsNameArrayFiltered);
+};
+
+let getIngredientMeasurements = () => {
+  let ingredientsMeasurementArray: any = [];
+  ingredientsMeasurementArray.push(drinkData.strMeasure1);
+  ingredientsMeasurementArray.push(drinkData.strMeasure2);
+  ingredientsMeasurementArray.push(drinkData.strMeasure3);
+  ingredientsMeasurementArray.push(drinkData.strMeasure4);
+  ingredientsMeasurementArray.push(drinkData.strMeasure5);
+  ingredientsMeasurementArray.push(drinkData.strMeasure6);
+  ingredientsMeasurementArray.push(drinkData.strMeasure7);
+  ingredientsMeasurementArray.push(drinkData.strMeasure8);
+  ingredientsMeasurementArray.push(drinkData.strMeasure9);
+  ingredientsMeasurementArray.push(drinkData.strMeasure10);
+  ingredientsMeasurementArray.push(drinkData.strMeasure11);
+  ingredientsMeasurementArray.push(drinkData.strMeasure12);
+  ingredientsMeasurementArray.push(drinkData.strMeasure13);
+  ingredientsMeasurementArray.push(drinkData.strMeasure14);
+  ingredientsMeasurementArray.push(drinkData.strMeasure15);
+
+  // removes undefined
+  var ingredientsNameArrayFiltered = ingredientsNameArray.filter(function (
+    e: any
+  ) {
+    return e != null;
+  });
+
+  // return ingredientsNameArrayFiltered;
+  console.log(ingredientsNameArrayFiltered);
 };
 
 //start render
@@ -61,7 +92,7 @@ export default class TabOneScreen extends Component {
   };
 
   onSubmit = () => {
-    let searchValue: string = this.state.search;
+    // let searchValue: string = this.state.search;
     getDataFromAPI(this.state.search); //gets data from api
     // getIngredientNames()
 
