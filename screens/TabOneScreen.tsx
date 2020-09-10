@@ -5,6 +5,8 @@ import { SearchBar } from "react-native-elements";
 
 //get cocktail data
 let drinkData: object = {};
+let ingredientsObject: object = {};
+// let count = 0
 // let ingredientsNameArray: any = [];
 // let ingredientsValueArray: any = [];
 
@@ -22,8 +24,7 @@ let getDataFromAPI = (input: string) => {
 };
 
 let getIngredients = () => {
-
-  let ingredientsObject = {
+  ingredientsObject = {
     1: drinkData.strMeasure1 + drinkData.strIngredient1,
     2: drinkData.strMeasure2 + drinkData.strIngredient2,
     3: drinkData.strMeasure3 + drinkData.strIngredient3,
@@ -40,7 +41,25 @@ let getIngredients = () => {
     14: drinkData.strMeasure14 + drinkData.strIngredient14,
     15: drinkData.strMeasure15 + drinkData.strIngredient15,
   };
-  console.log(ingredientsObject[1]);
+  console.log(ingredientsObject);
+
+  let count = 1;
+  while (count != 16) {
+    if (ingredientsObject[count] == 0) {
+      delete ingredientsObject[count];
+    }
+    count++;
+  }
+  console.log(ingredientsObject);
+
+  // if (ingredientsObject[6] == 0) {
+  //   // console.log('its zero');
+  //   // ingredientsObject[6] = null
+  //   // console.log(ingredientsObject[6]);
+  //   delete ingredientsObject[6]
+  //   console.log(ingredientsObject);
+
+  //   }
 };
 
 //start render
@@ -54,9 +73,7 @@ export default class TabOneScreen extends Component {
   };
 
   onSubmit = () => {
-    // let searchValue: string = this.state.search;
     getDataFromAPI(this.state.search); //gets data from api
-    // getIngredientNames()
 
     var reset = () => {
       this.setState({ state: this.state });
@@ -69,6 +86,17 @@ export default class TabOneScreen extends Component {
 
   render() {
     const { search } = this.state;
+
+    const elements = ["one", "two", "three"];
+    let objj = ingredientsObject;
+    const element1 = <Text>{ingredientsObject[1]}</Text>;
+    const element2 = <Text>{ingredientsObject[2]}</Text>;
+    const element3 = <Text>{ingredientsObject[3]}</Text>;
+    const element4 = <Text>{ingredientsObject[4]}</Text>;
+    const element5 = <Text>{ingredientsObject[5]}</Text>;
+    const element6 = <Text>{ingredientsObject[6]}</Text>;
+    const element7 = <Text>{ingredientsObject[7]}</Text>;
+    const element8 = <Text>{ingredientsObject[8]}</Text>;
 
     return (
       <View style={styles.container}>
@@ -93,9 +121,18 @@ export default class TabOneScreen extends Component {
 
             {/* ingrdients */}
             <Text style={styles.ingredientsTitle}>INGREDIENTS</Text>
-            <Text>1 sugar</Text>
+            {/* <Text>1 lemon</Text>
             <Text>2 lime</Text>
-            <Text>soda water</Text>
+            <Text>soda water</Text> */}
+
+            {element1}
+            {element2}
+            {element3}
+            {element4}
+            {element5}
+            {element6}
+            {element7}
+            {element8}
 
             {/* instrictions */}
             <Text style={styles.instructionsTitle}>INSTRUCTIONS</Text>
