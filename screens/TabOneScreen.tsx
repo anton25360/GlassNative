@@ -5,8 +5,8 @@ import { SearchBar } from "react-native-elements";
 
 //get cocktail data
 let drinkData: object = {};
-let ingredientsNameArray = [];
-let ingredientsValueArray = [];
+let ingredientsNameArray:any = [];
+let ingredientsValueArray:any = [];
 let testy = [];
 
 let getData = (input: string) => {
@@ -49,15 +49,13 @@ export default class TabOneScreen extends Component {
     ingredientsNameArray.push(drinkData.strIngredient15);
 
     //removes undefined
-    var ingredientsNameArrayFiltered = ingredientsNameArray.filter(function (
-      e
-    ) {
+    var ingredientsNameArrayFiltered = ingredientsNameArray.filter(function (e:any) {
       return e != null;
     });
 
 
     //removes duplicates
-    function onlyUnique(value, index, self) {
+    function onlyUnique(value:any, index:any, self:any) {
       return self.indexOf(value) === index;
     }
     var ingredientsNameArrayFinal = ingredientsNameArrayFiltered.filter(onlyUnique);
