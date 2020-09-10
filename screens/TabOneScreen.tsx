@@ -8,7 +8,6 @@ let drinkData: object = {};
 let ingredientsObject: object = {};
 
 let getDataFromAPI = (input: string) => {
-
   fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + input)
     .then(function (data) {
       return data.json();
@@ -54,13 +53,13 @@ let getIngredients = () => {
 
   //removes the word null from the array (eg: for ingredients like orange juice)
   for (let index = 0; index < ingredientsArray.length; index++) {
-    let element = ""+ingredientsArray[index];
+    let element = "" + ingredientsArray[index];
     element = element.replace("null", "");
     ingredientsArrayFinal.push(element);
   }
 
   console.log(ingredientsArrayFinal);
-  return ingredientsArrayFinal
+  return ingredientsArrayFinal;
 };
 
 //start render
@@ -88,29 +87,11 @@ export default class TabOneScreen extends Component {
   render() {
     const { search } = this.state;
 
-    // const elements = ["one", "two", "three"];
-    // let objj = ingredientsObject;
-    // const element1 = <Text>{ingredientsObject[1]}</Text>;
-    // const element2 = <Text>{ingredientsObject[2]}</Text>;
-    // const element3 = <Text>{ingredientsObject[3]}</Text>;
-    // const element4 = <Text>{ingredientsObject[4]}</Text>;
-    // const element5 = <Text>{ingredientsObject[5]}</Text>;
-    // const element6 = <Text>{ingredientsObject[6]}</Text>;
-    // const element7 = <Text>{ingredientsObject[7]}</Text>;
-    // const element8 = <Text>{ingredientsObject[8]}</Text>;
+    let ingredientsList = getIngredients();
 
-    // let array = getIngredients()
-    let a2 = getIngredients()
-    let array = ['ffff', 'fggggg', 'ygewd']
-    console.log('bruh');
-    
-    console.log(a2);
-    
-
-    const items = array.map(function(item){
+    const items = ingredientsList.map(function (item) {
       return <Text> {item} </Text>;
     });
-
 
     return (
       <View style={styles.container}>
@@ -135,19 +116,6 @@ export default class TabOneScreen extends Component {
 
             {/* ingrdients */}
             <Text style={styles.ingredientsTitle}>INGREDIENTS</Text>
-            {/* <Text>1 lemon</Text>
-            <Text>2 lime</Text>
-            <Text>soda water</Text> */}
-
-            {/* {element1}
-            {element2}
-            {element3}
-            {element4}
-            {element5}
-            {element6}
-            {element7}
-            {element8} */}
-
             {items}
 
             {/* instrictions */}
