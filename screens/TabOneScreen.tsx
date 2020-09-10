@@ -5,7 +5,7 @@ import { SearchBar } from "react-native-elements";
 
 //get cocktail data
 let drinkData: object = {};
-let ingredientsNameArray: any = [];
+// let ingredientsNameArray: any = [];
 let ingredientsValueArray: any = [];
 
 let getDataFromAPI = (input: string) => {
@@ -17,12 +17,42 @@ let getDataFromAPI = (input: string) => {
     })
     .then(function (data) {
       drinkData = data.drinks[0]; //gets 1st result, assigns it to global object
-      console.log("data recieved!!");
-      console.log(drinkData.strDrink);
+
+      getIngredientNames()
+      // console.log("data recieved!!");
+      // console.log(drinkData.strDrink);
     });
 };
 
-// let
+let getIngredientNames = () => {
+  let ingredientsNameArray: any = [];  
+  ingredientsNameArray.push(drinkData.strIngredient1);
+  ingredientsNameArray.push(drinkData.strIngredient2);
+  ingredientsNameArray.push(drinkData.strIngredient3);
+  ingredientsNameArray.push(drinkData.strIngredient4);
+  ingredientsNameArray.push(drinkData.strIngredient5);
+  ingredientsNameArray.push(drinkData.strIngredient6);
+  ingredientsNameArray.push(drinkData.strIngredient7);
+  ingredientsNameArray.push(drinkData.strIngredient8);
+  ingredientsNameArray.push(drinkData.strIngredient9);
+  ingredientsNameArray.push(drinkData.strIngredient10);
+  ingredientsNameArray.push(drinkData.strIngredient11);
+  ingredientsNameArray.push(drinkData.strIngredient12);
+  ingredientsNameArray.push(drinkData.strIngredient13);
+  ingredientsNameArray.push(drinkData.strIngredient14);
+  ingredientsNameArray.push(drinkData.strIngredient15);
+  console.log(ingredientsNameArray);
+  
+
+  // removes undefined
+  var ingredientsNameArrayFiltered = ingredientsNameArray.filter(function (
+    e: any
+  ) {
+    return e != null;
+  });
+
+  return ingredientsNameArrayFiltered
+};
 
 //start render
 export default class TabOneScreen extends Component {
@@ -35,42 +65,44 @@ export default class TabOneScreen extends Component {
     // getData(search); //gets data from api
     // console.log(drinkData);
 
-    ingredientsNameArray.push(drinkData.strIngredient1);
-    ingredientsNameArray.push(drinkData.strIngredient2);
-    ingredientsNameArray.push(drinkData.strIngredient3);
-    ingredientsNameArray.push(drinkData.strIngredient4);
-    ingredientsNameArray.push(drinkData.strIngredient5);
-    ingredientsNameArray.push(drinkData.strIngredient6);
-    ingredientsNameArray.push(drinkData.strIngredient7);
-    ingredientsNameArray.push(drinkData.strIngredient8);
-    ingredientsNameArray.push(drinkData.strIngredient9);
-    ingredientsNameArray.push(drinkData.strIngredient10);
-    ingredientsNameArray.push(drinkData.strIngredient11);
-    ingredientsNameArray.push(drinkData.strIngredient12);
-    ingredientsNameArray.push(drinkData.strIngredient13);
-    ingredientsNameArray.push(drinkData.strIngredient14);
-    ingredientsNameArray.push(drinkData.strIngredient15);
+    // ingredientsNameArray.push(drinkData.strIngredient1);
+    // ingredientsNameArray.push(drinkData.strIngredient2);
+    // ingredientsNameArray.push(drinkData.strIngredient3);
+    // ingredientsNameArray.push(drinkData.strIngredient4);
+    // ingredientsNameArray.push(drinkData.strIngredient5);
+    // ingredientsNameArray.push(drinkData.strIngredient6);
+    // ingredientsNameArray.push(drinkData.strIngredient7);
+    // ingredientsNameArray.push(drinkData.strIngredient8);
+    // ingredientsNameArray.push(drinkData.strIngredient9);
+    // ingredientsNameArray.push(drinkData.strIngredient10);
+    // ingredientsNameArray.push(drinkData.strIngredient11);
+    // ingredientsNameArray.push(drinkData.strIngredient12);
+    // ingredientsNameArray.push(drinkData.strIngredient13);
+    // ingredientsNameArray.push(drinkData.strIngredient14);
+    // ingredientsNameArray.push(drinkData.strIngredient15);
 
-    //removes undefined
-    var ingredientsNameArrayFiltered = ingredientsNameArray.filter(function (
-      e: any
-    ) {
-      return e != null;
-    });
+    // //removes undefined
+    // var ingredientsNameArrayFiltered = ingredientsNameArray.filter(function (
+    //   e: any
+    // ) {
+    //   return e != null;
+    // });
 
-    //removes duplicates
-    function onlyUnique(value: any, index: any, self: any) {
-      return self.indexOf(value) === index;
-    }
-    var ingredientsNameArrayFinal = ingredientsNameArrayFiltered.filter(
-      onlyUnique
-    );
+    // //removes duplicates
+    // function onlyUnique(value: any, index: any, self: any) {
+    //   return self.indexOf(value) === index;
+    // }
+    // var ingredientsNameArrayFinal = ingredientsNameArrayFiltered.filter(
+    //   onlyUnique
+    // );
 
     // console.log(ingredientsNameArrayFinal);
   };
 
   onSubmit = () => {
+    let searchValue:string = this.state.search
     getDataFromAPI(this.state.search); //gets data from api
+    // getIngredientNames()
 
     var reset = () => {
       this.setState({ state: this.state });
