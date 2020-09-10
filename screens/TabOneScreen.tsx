@@ -5,11 +5,10 @@ import { SearchBar } from "react-native-elements";
 
 //get cocktail data
 let drinkData: object = {};
-let ingredientsNameArray:any = [];
-let ingredientsValueArray:any = [];
-let testy = [];
+let ingredientsNameArray: any = [];
+let ingredientsValueArray: any = [];
 
-let getData = (input: string) => {
+let getDataFromAPI = (input: string) => {
   console.log("calling api...");
 
   fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + input)
@@ -18,8 +17,12 @@ let getData = (input: string) => {
     })
     .then(function (data) {
       drinkData = data.drinks[0]; //gets 1st result, assigns it to global object
+      console.log("data recieved!!");
+      console.log(drinkData.strDrink);
     });
 };
+
+// let
 
 //start render
 export default class TabOneScreen extends Component {
@@ -29,8 +32,8 @@ export default class TabOneScreen extends Component {
 
   updateSearch = (search: string) => {
     this.setState({ search });
-    getData(search); //gets data from api
-    // console.log(drinkData.strIngredient1);
+    // getData(search); //gets data from api
+    // console.log(drinkData);
 
     ingredientsNameArray.push(drinkData.strIngredient1);
     ingredientsNameArray.push(drinkData.strIngredient2);
@@ -49,21 +52,34 @@ export default class TabOneScreen extends Component {
     ingredientsNameArray.push(drinkData.strIngredient15);
 
     //removes undefined
-    var ingredientsNameArrayFiltered = ingredientsNameArray.filter(function (e:any) {
+    var ingredientsNameArrayFiltered = ingredientsNameArray.filter(function (
+      e: any
+    ) {
       return e != null;
     });
 
-
     //removes duplicates
-    function onlyUnique(value:any, index:any, self:any) {
+    function onlyUnique(value: any, index: any, self: any) {
       return self.indexOf(value) === index;
     }
-    var ingredientsNameArrayFinal = ingredientsNameArrayFiltered.filter(onlyUnique);
+    var ingredientsNameArrayFinal = ingredientsNameArrayFiltered.filter(
+      onlyUnique
+    );
 
-    console.log(ingredientsNameArrayFinal);
-    
+    // console.log(ingredientsNameArrayFinal);
   };
 
+  onSubmit = () => {
+    getDataFromAPI(this.state.search); //gets data from api
+
+    var reset = () => {
+      this.setState({ state: this.state });
+    };
+
+    setTimeout(function () {
+      reset();
+    }, 500);
+  };
 
   render() {
     const { search } = this.state;
@@ -74,6 +90,7 @@ export default class TabOneScreen extends Component {
           placeholder="eg: Mojito"
           onChangeText={this.updateSearch}
           returnKeyType="search"
+          onSubmitEditing={this.onSubmit}
           value={search}
         />
 
