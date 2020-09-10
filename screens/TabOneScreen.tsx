@@ -44,22 +44,27 @@ let getIngredients = () => {
   console.log(ingredientsObject);
 
   let count = 1;
+  let ingredientsArray = [];
+  let ingredientsArrayFinal = [];
+
+  //removes empty ingredients from object and puts existing ones in an array
   while (count != 16) {
     if (ingredientsObject[count] == 0) {
       delete ingredientsObject[count];
+    } else {
+      ingredientsArray.push(ingredientsObject[count]);
     }
     count++;
   }
-  console.log(ingredientsObject);
 
-  // if (ingredientsObject[6] == 0) {
-  //   // console.log('its zero');
-  //   // ingredientsObject[6] = null
-  //   // console.log(ingredientsObject[6]);
-  //   delete ingredientsObject[6]
-  //   console.log(ingredientsObject);
+  //removes the word null from the array (eg: for ingredients like orange juice)
+  for (let index = 0; index < ingredientsArray.length; index++) {
+    let element = ingredientsArray[index];
+    element = element.replace("null", "");
+    ingredientsArrayFinal.push(element);
+  }
 
-  //   }
+  console.log(ingredientsArrayFinal);
 };
 
 //start render
