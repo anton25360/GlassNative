@@ -39,8 +39,8 @@ let getIngredients = () => {
   };
 
   let count = 1;
-  let ingredientsArray = [''];
-  let ingredientsArrayFinal = [''];
+  let ingredientsArray = [];
+  let ingredientsArrayFinal = [];
 
   //removes empty ingredients from object and puts existing ones in an array
   while (count != 16) {
@@ -100,7 +100,16 @@ export default class TabOneScreen extends Component {
     // const element8 = <Text>{ingredientsObject[8]}</Text>;
 
     // let array = getIngredients()
-;
+    let a2 = getIngredients()
+    let array = ['ffff', 'fggggg', 'ygewd']
+    console.log('bruh');
+    
+    console.log(a2);
+    
+
+    const items = array.map(function(item){
+      return <Text> {item} </Text>;
+    });
 
 
     return (
@@ -139,7 +148,7 @@ export default class TabOneScreen extends Component {
             {element7}
             {element8} */}
 
-            {/* {items} */}
+            {items}
 
             {/* instrictions */}
             <Text style={styles.instructionsTitle}>INSTRUCTIONS</Text>
