@@ -5,6 +5,10 @@ import { SearchBar } from "react-native-elements";
 
 //get cocktail data
 let drinkData: object = {};
+let ingredientsNameArray = [];
+let ingredientsValueArray = [];
+let testy = [];
+
 let getData = (input: string) => {
   console.log("calling api...");
 
@@ -26,8 +30,42 @@ export default class TabOneScreen extends Component {
   updateSearch = (search: string) => {
     this.setState({ search });
     getData(search); //gets data from api
-    console.log(drinkData);
+    // console.log(drinkData.strIngredient1);
+
+    ingredientsNameArray.push(drinkData.strIngredient1);
+    ingredientsNameArray.push(drinkData.strIngredient2);
+    ingredientsNameArray.push(drinkData.strIngredient3);
+    ingredientsNameArray.push(drinkData.strIngredient4);
+    ingredientsNameArray.push(drinkData.strIngredient5);
+    ingredientsNameArray.push(drinkData.strIngredient6);
+    ingredientsNameArray.push(drinkData.strIngredient7);
+    ingredientsNameArray.push(drinkData.strIngredient8);
+    ingredientsNameArray.push(drinkData.strIngredient9);
+    ingredientsNameArray.push(drinkData.strIngredient10);
+    ingredientsNameArray.push(drinkData.strIngredient11);
+    ingredientsNameArray.push(drinkData.strIngredient12);
+    ingredientsNameArray.push(drinkData.strIngredient13);
+    ingredientsNameArray.push(drinkData.strIngredient14);
+    ingredientsNameArray.push(drinkData.strIngredient15);
+
+    //removes undefined
+    var ingredientsNameArrayFiltered = ingredientsNameArray.filter(function (
+      e
+    ) {
+      return e != null;
+    });
+
+
+    //removes duplicates
+    function onlyUnique(value, index, self) {
+      return self.indexOf(value) === index;
+    }
+    var ingredientsNameArrayFinal = ingredientsNameArrayFiltered.filter(onlyUnique);
+
+    console.log(ingredientsNameArrayFinal);
+    
   };
+
 
   render() {
     const { search } = this.state;
@@ -37,6 +75,7 @@ export default class TabOneScreen extends Component {
         <SearchBar
           placeholder="eg: Mojito"
           onChangeText={this.updateSearch}
+          returnKeyType="search"
           value={search}
         />
 
@@ -86,33 +125,33 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 40,
     fontFamily: "productSans-bold",
-    marginTop: 40,
+    // marginTop: 40,
   },
   titleSub: {
     fontSize: 17,
     fontFamily: "productSans-regular",
-    marginTop: 10,
+    // marginTop : 10,
   },
 
   // ingredients
   ingredientsTitle: {
     fontSize: 20,
     fontFamily: "productSans-bold",
-    marginTop: 20,
+    // marginTop: 20,
   },
 
   //instructions
   instructionsTitle: {
     fontSize: 20,
     fontFamily: "productSans-bold",
-    marginTop: 20,
+    // marginTop: 20,
   },
   instructionsText: {
     // fontSize: 20,
     fontFamily: "productSans-regular",
     // justifyContent: 'center',
     textAlign: "center",
-    padding: 30,
+    // padding: 30,
     // marginTop: 20
   },
 
