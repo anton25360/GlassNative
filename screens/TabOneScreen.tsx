@@ -8,7 +8,7 @@ let drinkData: object = {};
 let ingredientsObject: object = {};
 
 let getDataFromAPI = (input: string) => {
-  fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + input)
+  fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + "mojito")
     .then(function (data) {
       return data.json();
     })
@@ -90,7 +90,7 @@ export default class TabOneScreen extends Component {
     let ingredientsList = getIngredients();
 
     const items = ingredientsList.map(function (item) {
-      return <Text> {item} </Text>;
+      return <Text style={styles.ingredientsText}> {item} </Text>;
     });
 
     return (
@@ -147,39 +147,46 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 40,
     fontFamily: "productSans-bold",
-    // marginTop: 40,
+    marginTop: 20,
   },
   titleSub: {
     fontSize: 17,
     fontFamily: "productSans-regular",
-    // marginTop : 10,
+    marginTop: 5,
   },
 
   // ingredients
   ingredientsTitle: {
     fontSize: 20,
     fontFamily: "productSans-bold",
-    // marginTop: 20,
+    marginTop: 20,
+    paddingBottom: 3,
+  },
+  ingredientsText: {
+    fontSize: 19,
+    fontFamily: "productSans-regular",
+    padding: 3,
   },
 
   //instructions
   instructionsTitle: {
     fontSize: 20,
     fontFamily: "productSans-bold",
-    // marginTop: 20,
+    marginTop: 20,
   },
   instructionsText: {
-    // fontSize: 20,
+    fontSize: 19,
     fontFamily: "productSans-regular",
-    // justifyContent: 'center',
     textAlign: "center",
-    // padding: 30,
-    // marginTop: 20
+    padding: 30,
+    marginTop: -25,
   },
 
   //drink Image
   drinkImage: {
-    width: 150,
-    height: 150,
+    width: 270,
+    height: 270,
+    borderRadius: 5,
+    marginBottom: 50,
   },
 });
