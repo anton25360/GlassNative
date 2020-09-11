@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Image, StyleSheet, ScrollView } from "react-native";
+import { Image, StyleSheet, ScrollView, Button, Alert } from "react-native";
 import { Text, View } from "../components/Themed";
 import { SearchBar } from "react-native-elements";
 
@@ -84,6 +84,10 @@ export default class TabOneScreen extends Component {
     }, 500);
   };
 
+  onButtonPress = () => {
+    alert('hello')
+  }
+
   render() {
     const { search } = this.state;
 
@@ -129,6 +133,14 @@ export default class TabOneScreen extends Component {
               style={styles.drinkImage}
               source={{ uri: drinkData.strDrinkThumb }}
             ></Image>
+
+            {/* add to favourites button */}
+            <Button
+              onPress={this.onButtonPress}
+              title="Learn More"
+              color="#841584"
+              accessibilityLabel="Learn more about this purple button"
+            />
           </ScrollView>
         </View>
       </View>
