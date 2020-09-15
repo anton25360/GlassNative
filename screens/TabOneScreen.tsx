@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import { Image, StyleSheet, ScrollView, Button, Alert } from "react-native";
+import { Image, StyleSheet, ScrollView } from "react-native";
 import { Text, View } from "../components/Themed";
-import { SearchBar } from "react-native-elements";
+import { SearchBar, Button } from "react-native-elements";
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 
 //get cocktail data
 let drinkData: object = {};
@@ -138,8 +140,8 @@ export default class TabOneScreen extends Component {
             <Button
               onPress={this.onButtonPress}
               title="Learn More"
-              color="#841584"
-              accessibilityLabel="Learn more about this purple button"
+              // color="#841584"
+              // accessibilityLabel="Learn more about this purple button"
             />
           </ScrollView>
         </View>
