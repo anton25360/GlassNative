@@ -137,6 +137,7 @@ export default class TabOneScreen extends Component {
 
             {/* add to favourites button */}
             <Button
+              icon={<Icon name="heart-o" size={15} color="white" />}
               title="Add to Favourites"
               titleStyle={styles.favouritesBtnText}
               buttonStyle={{
@@ -208,6 +209,6 @@ const styles = StyleSheet.create({
 
   //favs button
   favouritesBtnText: {
-    paddingLeft: 7,
+    paddingLeft: 5,
   },
 });
