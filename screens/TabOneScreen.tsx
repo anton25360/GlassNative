@@ -137,11 +137,14 @@ export default class TabOneScreen extends Component {
 
             {/* add to favourites button */}
             <Button
-              icon={<Icon name="heart-o" size={15} color="white" />}
               title="Add to Favourites"
+              titleStyle={styles.favouritesBtnText}
+              buttonStyle={{
+                backgroundColor: "#54bf77",
+              }}
               raised={true}
+              onPress={this.onButtonPress}
             />
-
           </ScrollView>
         </View>
       </View>
@@ -201,5 +204,10 @@ const styles = StyleSheet.create({
     height: 270,
     borderRadius: 5,
     marginBottom: 50,
+  },
+
+  //favs button
+  favouritesBtnText: {
+    paddingLeft: 7,
   },
 });
