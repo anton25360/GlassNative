@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import { Image, StyleSheet, ScrollView } from "react-native";
 import { Text, View } from "../components/Themed";
 import { SearchBar, Button } from "react-native-elements";
-import Icon from 'react-native-vector-icons/FontAwesome';
-
+import Icon from "react-native-vector-icons/FontAwesome";
 
 //get cocktail data
 let drinkData: object = {};
@@ -87,8 +86,8 @@ export default class TabOneScreen extends Component {
   };
 
   onButtonPress = () => {
-    alert('hello')
-  }
+    alert("hello");
+  };
 
   render() {
     const { search } = this.state;
@@ -138,11 +137,11 @@ export default class TabOneScreen extends Component {
 
             {/* add to favourites button */}
             <Button
-              onPress={this.onButtonPress}
-              title="Learn More"
-              // color="#841584"
-              // accessibilityLabel="Learn more about this purple button"
+              icon={<Icon name="heart-o" size={15} color="white" />}
+              title="Add to Favourites"
+              raised={true}
             />
+
           </ScrollView>
         </View>
       </View>
