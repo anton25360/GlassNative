@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Image, StyleSheet, ScrollView } from "react-native";
+import { Image, StyleSheet, ScrollView, Alert } from "react-native";
 import { Text, View } from "../components/Themed";
 import { SearchBar, Button } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
@@ -86,7 +86,8 @@ export default class TabOneScreen extends Component {
   };
 
   onButtonPress = () => {
-    alert(drinkData.strDrink + " has been added to Favourites!");
+    // alert(drinkData.strDrink + " has been added to Favourites!");
+    Alert.alert(null, drinkData.strDrink + ' has been added to Favourites!')
   };
 
   render() {
