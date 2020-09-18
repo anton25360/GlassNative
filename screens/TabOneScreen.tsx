@@ -86,7 +86,7 @@ export default class TabOneScreen extends Component {
   };
 
   onButtonPress = () => {
-    alert("hello");
+    alert(drinkData.strDrink + " has been added to Favourites!");
   };
 
   render() {
@@ -216,6 +216,8 @@ const styles = StyleSheet.create({
     marginBottom:30
   },
   favouritesBtnText: {
-    paddingLeft: 5,
+    paddingLeft: 6,
+    fontFamily: "productSans-regular",
+
   },
 });
