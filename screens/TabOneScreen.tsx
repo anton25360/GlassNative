@@ -9,7 +9,7 @@ let drinkData: object = {};
 let ingredientsObject: object = {};
 
 let getDataFromAPI = (input: string) => {
-  fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + "mojito")
+  fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + input)
     .then(function (data) {
       return data.json();
     })
@@ -136,16 +136,19 @@ export default class TabOneScreen extends Component {
             ></Image>
 
             {/* add to favourites button */}
-            <Button
-              icon={<Icon name="heart-o" size={15} color="white" />}
-              title="Add to Favourites"
-              titleStyle={styles.favouritesBtnText}
-              buttonStyle={{
-                backgroundColor: "#54bf77",
-              }}
-              raised={true}
-              onPress={this.onButtonPress}
-            />
+            <View style={styles.favouritesBtnContainer}>
+              <Button
+                icon={<Icon name="heart-o" size={15} color="white" />}
+                title="Add to Favourites"
+                titleStyle={styles.favouritesBtnText}
+                // style={styles.favouritesBtn}
+                buttonStyle={{
+                  backgroundColor: "#54bf77",
+                }}
+                raised={true}
+                onPress={this.onButtonPress}
+              />
+            </View>
           </ScrollView>
         </View>
       </View>
@@ -204,10 +207,14 @@ const styles = StyleSheet.create({
     width: 270,
     height: 270,
     borderRadius: 5,
-    marginBottom: 50,
+    // marginBottom: 50,
   },
 
   //favs button
+  favouritesBtnContainer: {
+    marginTop: 30,
+    marginBottom:30
+  },
   favouritesBtnText: {
     paddingLeft: 5,
   },
