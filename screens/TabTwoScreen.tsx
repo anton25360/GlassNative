@@ -1,15 +1,32 @@
-import * as React from "react";
-import { StyleSheet } from "react-native";
+import React, { Component } from "react";
+import { StyleSheet, AsyncStorage } from "react-native";
 import { Text, View } from "../components/Themed";
 
-export default function TabTwoScreen() {
-  console.log("favourites tab rendered");
+export default class TabTwoScreen extends Component {
+  getFavouritesArray = async () => {
+    try {
+      const value = await AsyncStorage.getItem("name");
+      if (value !== null) {
+        // We have data!!
+        const restoredArray = JSON.parse(value);
+        console.log('here is the array:'+restoredArray);
+      }
+    } catch (error) {
+      // Error retrieving data
+      console.log("its empty OR there was an error");
+    }
+  };
 
-  return (
-    <View style={styles.container}>
-      <Text style={styles.message}>You don't have any favourites!</Text>
-    </View>
-  );
+  render() {
+    //some code here
+    this.getFavouritesArray()
+
+    return (
+      <View style={styles.container}>
+        <Text style={styles.message}>You don't have any favourites!</Text>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
