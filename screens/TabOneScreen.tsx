@@ -1,8 +1,15 @@
 import React, { Component } from "react";
-import { Image, StyleSheet, ScrollView, Alert, AsyncStorage } from "react-native";
+import {
+  Image,
+  StyleSheet,
+  ScrollView,
+  Alert,
+  // AsyncStorage,
+} from "react-native";
 import { Text, View } from "../components/Themed";
 import { SearchBar, Button } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
+import FavouritesArray from '../components/FavouritesArray'
 
 //get cocktail data
 let drinkData: object = {};
@@ -85,11 +92,16 @@ export default class TabOneScreen extends Component {
     }, 500);
   };
 
-  onButtonPress = () => {
-    // alert(drinkData.strDrink + " has been added to Favourites!");
-    Alert.alert(null, drinkData.strDrink + ' has been added to Favourites!') //no title
-    // localStorage.setItem('myData', drinkData.strDrink);
+  onButtonPress = async () => {
+    Alert.alert(null, drinkData.strDrink + " has been added to Favourites!"); //no title
 
+    let lol = FavouritesArray()
+    lol.push('helloFriend')
+    console.log(lol);
+    // console.log(FavouritesArray());
+    // FavouritesArray()
+    
+   
   };
 
   render() {
@@ -216,11 +228,10 @@ const styles = StyleSheet.create({
   //favs button
   favouritesBtnContainer: {
     marginTop: 30,
-    marginBottom:30
+    marginBottom: 30,
   },
   favouritesBtnText: {
     paddingLeft: 6,
     fontFamily: "productSans-regular",
-
   },
 });
