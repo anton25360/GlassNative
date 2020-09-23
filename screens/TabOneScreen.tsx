@@ -9,7 +9,7 @@ import {
 import { Text, View } from "../components/Themed";
 import { SearchBar, Button } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
-import FavouritesArray from '../components/FavouritesArray'
+import ReturnFavouritesArray from '../components/ReturnFavouritesArray'
 
 //get cocktail data
 let drinkData: object = {};
@@ -95,9 +95,9 @@ export default class TabOneScreen extends Component {
   onButtonPress = async () => {
     Alert.alert(null, drinkData.strDrink + " has been added to Favourites!"); //no title
 
-    let lol = FavouritesArray()
-    lol.push('helloFriend')
-    console.log(lol);
+    let FavouritesArray = ReturnFavouritesArray()
+    // FavouritesArray.push(drinkData.strDrink)
+    console.log(FavouritesArray);
     // console.log(FavouritesArray());
     // FavouritesArray()
     
