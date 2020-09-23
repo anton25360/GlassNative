@@ -4,12 +4,10 @@ import {
   StyleSheet,
   ScrollView,
   Alert,
-  AsyncStorage,
 } from "react-native";
 import { Text, View } from "../components/Themed";
 import { SearchBar, Button } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
-// import ReturnFavouritesArray from '../components/ReturnFavouritesArray'
 
 //get cocktail data
 let drinkData: object = {};
@@ -94,63 +92,6 @@ export default class TabOneScreen extends Component {
 
   onButtonPress = async () => {
     Alert.alert(null, drinkData.strDrink + " has been added to Favourites!"); //no title
-
-    let arrayTest = ["one", "two", "three"];
-
-    // AsyncStorage.setItem("name", JSON.stringify(arrayTest));
-    // let res = AsyncStorage.getItem("name");
-    // console.log(res);
-
-    //save data
-    try {
-      await AsyncStorage.setItem("name", JSON.stringify(arrayTest));
-      console.log(' saving success');
-
-    } catch (error) {
-      // Error saving data
-      console.log('erorr saving'); 
-    }
-
-  
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // if FavouritesArray doesnt exist, create it and add the drink, else just add the drink
-    // try {
-    //   const value = AsyncStorage.getItem("FavouritesArray");
-    //   if (value !== null) {
-    //     // We have data!!
-    //     console.log('data added!!');
-    //     console.log(value);
-
-    //   }
-    // } catch (error) {
-    //   // Error retrieving data
-    //   console.log('favs does not exist. Creating now...');
-
-    //   let arrayTemp = ["one", "two", "three"]; //create temp array
-    //   const stringifiedArray = JSON.stringify(arrayTemp) //stringify the array
-    //   AsyncStorage.setItem("FavouritesArray", stringifiedArray); //add array to FavouritesArray key
-
-    //   console.log('favs created!');
-
-    // }
   };
 
   render() {
