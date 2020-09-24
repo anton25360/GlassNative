@@ -4,10 +4,12 @@ import {
   StyleSheet,
   ScrollView,
   Alert,
+  // AsyncStorage
 } from "react-native";
 import { Text, View } from "../components/Themed";
 import { SearchBar, Button } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
+import AsyncStorage from "@react-native-community/async-storage";
 
 //get cocktail data
 let drinkData: object = {};
@@ -92,6 +94,59 @@ export default class TabOneScreen extends Component {
 
   onButtonPress = async () => {
     Alert.alert(null, drinkData.strDrink + " has been added to Favourites!"); //no title
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    let searchValue = drinkData.strDrink;
+
+    AsyncStorage.getItem("favouritesArray").then((favouritesArray) => {
+      const favouritesArrayDecoded = favouritesArray
+        ? JSON.parse(favouritesArray)
+        : [];
+      favouritesArrayDecoded.push(searchValue);
+      // console.log(favouritesArrayDecoded);
+      
+      AsyncStorage.setItem("favouritesArray", JSON.stringify(favouritesArrayDecoded));
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    alert('done')
   };
 
   render() {
