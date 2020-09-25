@@ -74,7 +74,7 @@ let getIngredients = () => {
 export default class TabOneScreen extends Component {
   state = {
     search: "",
-    showResults:false
+    // showResults: false,
   };
 
   updateSearch = (search: string) => {
@@ -103,10 +103,12 @@ export default class TabOneScreen extends Component {
         : [];
       favouritesArrayDecoded.push(searchValue);
       console.log(favouritesArrayDecoded);
-      
-      AsyncStorage.setItem("favouritesArray", JSON.stringify(favouritesArrayDecoded));
-    });
 
+      AsyncStorage.setItem(
+        "favouritesArray",
+        JSON.stringify(favouritesArrayDecoded)
+      );
+    });
   };
 
   render() {
@@ -117,6 +119,15 @@ export default class TabOneScreen extends Component {
     const items = ingredientsList.map(function (item) {
       return <Text style={styles.ingredientsText}> {item} </Text>;
     });
+
+    let showResults = false
+
+    if (drinkData.strDrink == null) {
+      showResults = false
+    } else {
+      showResults = true
+    }
+    
 
     return (
       <View style={styles.container}>
@@ -129,7 +140,8 @@ export default class TabOneScreen extends Component {
         />
 
         {/* drink data goes here (container) */}
-        <View style={styles.dataContainer}>
+        {/* <View style={styles.dataContainer}> */}
+        <View style={{ display: showResults ? "flex" : "none" }} >
           <ScrollView
             contentContainerStyle={{ flexGrow: 1, alignItems: "center" }}
           >
