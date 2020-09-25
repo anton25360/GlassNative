@@ -119,7 +119,7 @@ export default class TabOneScreen extends Component {
         ? JSON.parse(favouritesArray)
         : [];
       favouritesArrayDecoded.push(searchValue);
-      // console.log(favouritesArrayDecoded);
+      console.log(favouritesArrayDecoded);
       
       AsyncStorage.setItem("favouritesArray", JSON.stringify(favouritesArrayDecoded));
     });

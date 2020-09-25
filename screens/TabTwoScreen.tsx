@@ -5,57 +5,34 @@ import AsyncStorage from "@react-native-community/async-storage";
 
 export default class TabTwoScreen extends Component {
 
-  returnFavouritesArray() {
-    let tempArray:any = []
-
-    AsyncStorage.getItem("favouritesArray").then((favouritesArray) => {
-      const favouritesArrayDecoded = favouritesArray
-        ? JSON.parse(favouritesArray)
-        : [];      
-      tempArray.push(favouritesArrayDecoded)
-    });
+  state = {
+    favsArray: [],
+  };
   
-    
-    return tempArray
-  }
-
-  returnFavouriteItems() {
-    let thing = ['aa','bb','cc']
-
-      thing.map(function (item) {
-      return <Text style={styles.message}> {item} </Text>;
-    });
-  }
-
-
+  
   render() {
     //some code here
-    console.log('bruh moment = ' + this.returnFavouritesArray())
+    const getData = async (key) => {
+      try {
+        const data = await AsyncStorage.getItem(key);
+        if (data !== null) {
+          let dataDecoded = JSON.parse(data)
+          return dataDecoded;
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+ 
+     getData("favouritesArray") 
+    .then((data) => data)
+    .then((value) => this.setState({ favsArray: value }))
+    .catch((err) => console.log("AsyncStorageErr: " + err));
 
-    // let thing2 = this.returnFavouritesArray()    
-    let thing = ['aa', 'bb', 'cc']
-    
-    const items = thing.map(function (item:string) {
+
+    const items = this.state.favsArray.map(function (item) {
       return <Text style={styles.message}> {item} </Text>;
     });
-
-
-    
-    // console.log();
-    
-    
-
-    
-    // AsyncStorage.getItem("favouritesArray").then((favouritesArray) => {
-    //   const favouritesArrayDecoded = favouritesArray
-    //     ? JSON.parse(favouritesArray)
-    //     : [];
-    //   console.log(favouritesArrayDecoded);
-    //   alert(favouritesArrayDecoded)
-    // });
-
-
-
 
 
     return (
