@@ -273,7 +273,7 @@ const styles = StyleSheet.create({
   },
   introGlass: {
     fontFamily: "productSans-regular",
-    fontSize:45
+    fontSize:55
   },
   introSubtext: {
     fontFamily: "productSans-regular",
