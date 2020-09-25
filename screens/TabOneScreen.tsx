@@ -74,6 +74,7 @@ let getIngredients = () => {
 export default class TabOneScreen extends Component {
   state = {
     search: "",
+    showResults:false
   };
 
   updateSearch = (search: string) => {
@@ -94,24 +95,6 @@ export default class TabOneScreen extends Component {
 
   onButtonPress = async () => {
     Alert.alert(null, drinkData.strDrink + " has been added to Favourites!"); //no title
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     let searchValue = drinkData.strDrink;
 
     AsyncStorage.getItem("favouritesArray").then((favouritesArray) => {
@@ -123,7 +106,6 @@ export default class TabOneScreen extends Component {
       
       AsyncStorage.setItem("favouritesArray", JSON.stringify(favouritesArrayDecoded));
     });
-
 
   };
 
