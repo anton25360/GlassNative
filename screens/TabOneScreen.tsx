@@ -146,9 +146,9 @@ export default class TabOneScreen extends Component {
             alignItems: "center",
           }}
         >
-          <Text>welcome to</Text>
-          <Text>Glass.</Text>
-          <Text>Start searching or go to favourites.</Text>
+          <Text style={styles.introWelcomeTo}>welcome to</Text>
+          <Text style={styles.introGlass}>Glass</Text>
+          <Text style={styles.introSubtext}>Start searching or go to favourites.</Text>
         </View>
 
         {/* drink data goes here (container) */}
@@ -208,6 +208,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
   },
+
+  //drink title
   title: {
     fontSize: 40,
     fontFamily: "productSans-bold",
@@ -262,5 +264,20 @@ const styles = StyleSheet.create({
   favouritesBtnText: {
     paddingLeft: 6,
     fontFamily: "productSans-regular",
+  },
+
+  //into text (hidden on search)
+  introWelcomeTo: {
+    fontFamily: "productSans-regular",
+    fontSize:25
+  },
+  introGlass: {
+    fontFamily: "productSans-regular",
+    fontSize:45
+  },
+  introSubtext: {
+    fontFamily: "productSans-regular",
+    fontSize: 17,
+    marginTop:30
   },
 });
