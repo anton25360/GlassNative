@@ -257,7 +257,7 @@ const styles = StyleSheet.create({
   //favs button
   favouritesBtnContainer: {
     marginTop: 30,
-    marginBottom: 30,
+    marginBottom: 100,
   },
   favouritesBtnText: {
     paddingLeft: 6,
