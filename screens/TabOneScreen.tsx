@@ -120,14 +120,13 @@ export default class TabOneScreen extends Component {
       return <Text style={styles.ingredientsText}> {item} </Text>;
     });
 
-    let showResults = false
+    let showResults = false;
 
     if (drinkData.strDrink == null) {
-      showResults = false
+      showResults = false;
     } else {
-      showResults = true
+      showResults = true;
     }
-    
 
     return (
       <View style={styles.container}>
@@ -139,9 +138,22 @@ export default class TabOneScreen extends Component {
           value={search}
         />
 
+        <View
+          style={{
+            display: showResults ? "none" : "flex",
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Text>welcome to</Text>
+          <Text>Glass.</Text>
+          <Text>Start searching or go to favourites.</Text>
+        </View>
+
         {/* drink data goes here (container) */}
         {/* <View style={styles.dataContainer}> */}
-        <View style={{ display: showResults ? "flex" : "none" }} >
+        <View style={{ display: showResults ? "flex" : "none" }}>
           <ScrollView
             contentContainerStyle={{ flexGrow: 1, alignItems: "center" }}
           >
