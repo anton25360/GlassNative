@@ -125,28 +125,6 @@ export default class TabOneScreen extends Component {
     });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    alert('done')
   };
 
   render() {
