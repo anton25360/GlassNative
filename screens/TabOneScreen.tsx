@@ -148,7 +148,9 @@ export default class TabOneScreen extends Component {
         >
           <Text style={styles.introWelcomeTo}>welcome to</Text>
           <Text style={styles.introGlass}>Glass</Text>
-          <Text style={styles.introSubtext}>Start searching or go to favourites.</Text>
+          <Text style={styles.introSubtext}>
+            Start searching or go to favourites.
+          </Text>
         </View>
 
         {/* drink data goes here (container) */}
@@ -269,15 +271,15 @@ const styles = StyleSheet.create({
   //into text (hidden on search)
   introWelcomeTo: {
     fontFamily: "productSans-regular",
-    fontSize:25
+    fontSize: 25,
   },
   introGlass: {
     fontFamily: "productSans-regular",
-    fontSize:55
+    fontSize: 55,
   },
   introSubtext: {
     fontFamily: "productSans-regular",
     fontSize: 17,
-    marginTop:30
+    marginTop: 30,
   },
 });

@@ -4,41 +4,67 @@ import { Text, View } from "../components/Themed";
 import AsyncStorage from "@react-native-community/async-storage";
 
 export default class TabTwoScreen extends Component {
-
   state = {
     favsArray: [],
   };
-  
-  
+
   render() {
     //some code here
-    const getData = async (key) => {
+    const getData = async (key: string) => {
       try {
         const data = await AsyncStorage.getItem(key);
         if (data !== null) {
-          let dataDecoded = JSON.parse(data)
+          let dataDecoded = JSON.parse(data);
           return dataDecoded;
         }
       } catch (error) {
         console.log(error);
       }
     };
- 
-     getData("favouritesArray") 
-    .then((data) => data)
-    .then((value) => this.setState({ favsArray: value }))
-    .catch((err) => console.log("AsyncStorageErr: " + err));
 
+    getData("favouritesArray")
+      .then((data) => data)
+      .then((value) => this.setState({ favsArray: value }))
+      .catch((err) => console.log("AsyncStorageErr: " + err));
 
-    const items = this.state.favsArray.map(function (item) {
+    let favourites = this.state.favsArray;
+
+    const items = favourites.map(function (item) {
       return <Text style={styles.message}> {item} </Text>;
     });
 
+    let hasFavourites = false;
+
+    if (favourites.length == 0) {
+      hasFavourites = false;
+    } else {
+      hasFavourites = true;
+    }
 
     return (
       <View style={styles.container}>
-        <Text style={styles.message}>You don't have any favourites!</Text>
-        {items}
+        <View
+          style={{
+            display: hasFavourites ? "none" : "flex",
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Text style={styles.message}>You don't have any favourites!</Text>
+        </View>
+
+        <View
+          style={{
+            display: hasFavourites ? "flex" : "none",
+            // flex: 1,
+            // justifyContent: "center",
+            // alignItems: "center",
+          }}
+        >
+          {items}
+        </View>
+
       </View>
     );
   }
