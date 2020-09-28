@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button, StyleSheet } from "react-native";
 import { Text, View } from "../components/Themed";
 import AsyncStorage from "@react-native-community/async-storage";
+import FavouriteItem from '../components/FavouriteItem'
 
 export default class TabTwoScreen extends Component {
   state = {
@@ -52,6 +53,7 @@ export default class TabTwoScreen extends Component {
           }}
         >
           <Text style={styles.message}>You don't have any favourites!</Text>
+          <FavouriteItem name='hello' />
         </View>
 
         <View
