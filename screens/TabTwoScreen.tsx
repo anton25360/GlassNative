@@ -65,6 +65,7 @@ export default class TabTwoScreen extends Component {
           }}
         >
           {items}
+          <FavouriteItem name='Mojito' />
         </View>
 
       </View>
