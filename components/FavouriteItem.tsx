@@ -36,7 +36,6 @@ export default function FavouriteItem(name: any) {
 
         <TouchableOpacity
           style={styles.removeBtn}
-          // onPress={this.onRemoveButtonPress('a drinkssss')}
           onPress={() => {
             onRemoveButtonPress(name);
           }}
