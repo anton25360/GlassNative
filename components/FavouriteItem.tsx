@@ -1,17 +1,30 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
+import AsyncStorage from "@react-native-community/async-storage";
 
 function onViewButtonPress() {
   console.log("view drinks");
 }
 
-function onRemoveButtonPress() {
-  console.log("remove drinks");
+function onRemoveButtonPress(input: any) {
+  let drinkName = Object.values(input)[0];
+
+  AsyncStorage.getItem("favouritesArray").then((favouritesArray) => {
+    const favouritesArrayDecoded = favouritesArray
+      ? JSON.parse(favouritesArray)
+      : [];
+    //remove drink
+    let index = favouritesArrayDecoded.indexOf(drinkName);
+    favouritesArrayDecoded.splice(index, 1);
+    AsyncStorage.setItem(
+      "favouritesArray",
+      JSON.stringify(favouritesArrayDecoded)
+    );
+  });
 }
 
 export default function FavouriteItem(name: any) {
-
   return (
     <View style={styles.container}>
       <Text style={styles.name}>{name.name}</Text>
@@ -23,7 +36,10 @@ export default function FavouriteItem(name: any) {
 
         <TouchableOpacity
           style={styles.removeBtn}
-          onPress={onRemoveButtonPress}
+          // onPress={this.onRemoveButtonPress('a drinkssss')}
+          onPress={() => {
+            onRemoveButtonPress(name);
+          }}
         >
           <Text style={styles.btnText}>Remove</Text>
         </TouchableOpacity>
@@ -44,8 +60,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     backgroundColor: "#f2f7f4",
     margin: 10,
-    marginBottom:5,
-    borderRadius:5
+    marginBottom: 5,
+    borderRadius: 5,
   },
   btnContainer: {
     borderColor: "black",
@@ -58,7 +74,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 3,
     margin: 10,
-    marginLeft:5
+    marginLeft: 5,
   },
   viewBtn: {
     backgroundColor: "#50C878",
@@ -66,7 +82,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 3,
     margin: 10,
-    marginRight:5
+    marginRight: 5,
   },
   btnText: {
     fontFamily: "productSans-regular",
