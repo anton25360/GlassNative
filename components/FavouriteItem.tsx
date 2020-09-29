@@ -58,13 +58,15 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 3,
     margin: 10,
+    marginLeft:5
   },
   viewBtn: {
     backgroundColor: "#50C878",
-    flexGrow: 1,
+    flexGrow: 1.2,
     padding: 10,
     borderRadius: 3,
     margin: 10,
+    marginRight:5
   },
   btnText: {
     fontFamily: "productSans-regular",
