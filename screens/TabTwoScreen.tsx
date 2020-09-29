@@ -31,7 +31,9 @@ export default class TabTwoScreen extends Component {
     let favourites = this.state.favsArray;
 
     const items = favourites.map(function (item) {
-      return <Text style={styles.message}> {item} </Text>;
+      // return <Text style={styles.message}> {item} </Text>;
+      return <FavouriteItem name={item} />
+
     });
 
     let hasFavourites = false;
@@ -68,7 +70,7 @@ export default class TabTwoScreen extends Component {
           }}
         >
           {items}
-          <FavouriteItem name='Mojito' />
+          {/* <FavouriteItem name='Mojito' /> */}
         </View>
 
       </View>

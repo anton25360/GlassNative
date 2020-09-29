@@ -11,23 +11,10 @@ function onRemoveButtonPress() {
 }
 
 export default function FavouriteItem(name: any) {
-  // function onViewButtonPress = () => {
-  //   console.log('view drink');
 
-  // }
   return (
     <View style={styles.container}>
       <Text style={styles.name}>{name.name}</Text>
-      {/* 
-      <Button
-        icon={<Icon name="heart-o" size={15} color="white" />}
-        title="Add to Favourites"
-        buttonStyle={{
-          backgroundColor: "#54bf77",
-        }}
-        raised={true}
-        onPress={onViewButtonPress()}
-      /> */}
 
       <View style={styles.btnContainer}>
         <TouchableOpacity style={styles.viewBtn} onPress={onViewButtonPress}>
@@ -47,41 +34,26 @@ export default function FavouriteItem(name: any) {
 
 const styles = StyleSheet.create({
   name: {
-    // color: "blue",
     fontFamily: "productSans-regular",
-    fontSize: 35,
+    fontSize: 30,
     marginTop: 10,
     marginLeft: 12,
   },
   container: {
-    borderColor: "red",
-    // borderWidth: 2,
+    borderColor: "grey",
+    borderWidth: 1,
     backgroundColor: "#f2f7f4",
     margin: 10,
-    // borderRadius:2,
-    // elevation: 5,
-    
-
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.5,
-    shadowRadius: 2,
-    elevation: 5,
-
-
-
-
-
+    marginBottom:5,
+    borderRadius:5
   },
   btnContainer: {
     borderColor: "black",
-    // borderWidth: 2,
     display: "flex",
     flexDirection: "row",
-    // marginBottom:5
   },
   removeBtn: {
-    backgroundColor: "coral",
+    backgroundColor: "#ff3d54",
     flexGrow: 1,
     padding: 10,
     borderRadius: 3,
