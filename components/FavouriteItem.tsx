@@ -51,34 +51,52 @@ const styles = StyleSheet.create({
     fontFamily: "productSans-regular",
     fontSize: 35,
     marginTop: 10,
-    marginLeft:12
+    marginLeft: 12,
   },
   container: {
     borderColor: "red",
-    borderWidth: 2,
+    // borderWidth: 2,
+    backgroundColor: "#f2f7f4",
+    margin: 10,
+    // borderRadius:2,
+    // elevation: 5,
+    
+
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    elevation: 5,
+
+
+
+
+
   },
   btnContainer: {
     borderColor: "black",
     // borderWidth: 2,
     display: "flex",
     flexDirection: "row",
+    // marginBottom:5
   },
   removeBtn: {
     backgroundColor: "coral",
     flexGrow: 1,
     padding: 10,
     borderRadius: 3,
-    margin:10
+    margin: 10,
   },
   viewBtn: {
     backgroundColor: "#50C878",
     flexGrow: 1,
     padding: 10,
     borderRadius: 3,
-    margin:10
+    margin: 10,
   },
   btnText: {
     fontFamily: "productSans-regular",
-    fontSize:20
+    fontSize: 20,
+    textAlign: "center",
   },
 });
