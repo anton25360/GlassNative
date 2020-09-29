@@ -2,6 +2,8 @@ import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import AsyncStorage from "@react-native-community/async-storage";
+import GradientButton from 'react-native-gradient-buttons';
+
 
 function onViewButtonPress() {
   console.log("view drinks");
@@ -43,6 +45,9 @@ export default function FavouriteItem(name: any) {
           <Text style={styles.btnText}>Remove</Text>
         </TouchableOpacity>
       </View>
+
+      
+
     </View>
   );
 }
