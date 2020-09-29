@@ -49,6 +49,10 @@ const styles = StyleSheet.create({
   container: {
     borderColor: "red",
     borderWidth: 2,
+    // display: "flex",
+    // alignSelf: 'stretch',
+
+    // width: '100vw',
   },
   removeBtn: {
     backgroundColor:'coral'

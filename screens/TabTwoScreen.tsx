@@ -50,6 +50,8 @@ export default class TabTwoScreen extends Component {
             flex: 1,
             justifyContent: "center",
             alignItems: "center",
+            // alignSelf: 'stretch',
+
           }}
         >
           <Text style={styles.message}>You don't have any favourites!</Text>
@@ -59,9 +61,10 @@ export default class TabTwoScreen extends Component {
         <View
           style={{
             display: hasFavourites ? "flex" : "none",
-            // flex: 1,
+            flex: 1,
             // justifyContent: "center",
-            // alignItems: "center",
+            // alignItems: "stretch",
+            alignSelf:'stretch'
           }}
         >
           {items}
@@ -81,6 +84,8 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
+    alignSelf: 'stretch',
+
     justifyContent: "center",
     alignItems: "center",
   },
