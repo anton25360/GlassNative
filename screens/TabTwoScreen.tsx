@@ -3,6 +3,7 @@ import { Button, StyleSheet } from "react-native";
 import { Text, View } from "../components/Themed";
 import AsyncStorage from "@react-native-community/async-storage";
 import FavouriteItem from '../components/FavouriteItem'
+import { ScrollView } from "react-native-gesture-handler";
 
 export default class TabTwoScreen extends Component {
   state = {
@@ -52,26 +53,20 @@ export default class TabTwoScreen extends Component {
             flex: 1,
             justifyContent: "center",
             alignItems: "center",
-            // alignSelf: 'stretch',
-
           }}
         >
           <Text style={styles.message}>You don't have any favourites!</Text>
-          <FavouriteItem name='hello' />
         </View>
 
-        <View
+        <ScrollView
           style={{
             display: hasFavourites ? "flex" : "none",
             flex: 1,
-            // justifyContent: "center",
-            // alignItems: "stretch",
             alignSelf:'stretch'
           }}
         >
           {items}
-          {/* <FavouriteItem name='Mojito' /> */}
-        </View>
+        </ScrollView>
 
       </View>
     );
