@@ -94,20 +94,30 @@ export default class TabOneScreen extends Component {
   };
 
   onButtonPress = async () => {
-    Alert.alert(null, drinkData.strDrink + " has been added to Favourites!"); //no title
     let searchValue = drinkData.strDrink;
 
     AsyncStorage.getItem("favouritesArray").then((favouritesArray) => {
       const favouritesArrayDecoded = favouritesArray
         ? JSON.parse(favouritesArray)
         : [];
-      favouritesArrayDecoded.push(searchValue);
-      console.log(favouritesArrayDecoded);
 
-      AsyncStorage.setItem(
-        "favouritesArray",
-        JSON.stringify(favouritesArrayDecoded)
-      );
+      if (favouritesArrayDecoded.includes(searchValue)) {
+        Alert.alert(null, "You've already added this to your Favourites!"); //no title
+      } else {
+        Alert.alert(null, drinkData.strDrink + " has been added to your Favourites!"); //no title
+        favouritesArrayDecoded.push(searchValue);
+        AsyncStorage.setItem(
+          "favouritesArray",
+          JSON.stringify(favouritesArrayDecoded)
+        );
+      }
+      // favouritesArrayDecoded.push(searchValue);
+      // console.log(favouritesArrayDecoded);
+
+      // AsyncStorage.setItem(
+      //   "favouritesArray",
+      //   JSON.stringify(favouritesArrayDecoded)
+      // );
     });
   };
 
