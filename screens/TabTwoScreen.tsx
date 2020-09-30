@@ -111,7 +111,7 @@ export default class TabTwoScreen extends Component {
 
         <Modal
           animationType="slide"
-          transparent={true}
+          transparent={false}
           visible={this.state.showModal}
           onRequestClose={() => {
             alert("Modal has been closed.");
@@ -119,6 +119,15 @@ export default class TabTwoScreen extends Component {
         >
           <View style={styles.modalContent}>
             <Text>Hello i am modal</Text>
+
+            <TouchableOpacity
+              style={styles.closeModalBtn}
+              onPress={() => {
+                closeModal();
+              }}
+            >
+              <Text style={styles.closeModalBtnText}>Remove</Text>
+            </TouchableOpacity>
           </View>
         </Modal>
       </View>
@@ -139,8 +148,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   modalContent: {
-    borderColor: 'red',
-    borderWidth: 2
+    borderColor: "red",
+    borderWidth: 2,
+    flex: 1,
+    marginHorizontal: '10%',
+    marginVertical:'30%'
   },
   closeModalBtn: {},
   closeModalBtnText: {},
