@@ -4,10 +4,12 @@ import { Text, View } from "../components/Themed";
 import AsyncStorage from "@react-native-community/async-storage";
 import FavouriteItem from "../components/FavouriteItem";
 import { ScrollView } from "react-native-gesture-handler";
+import Modal from 'react-native-modal';
 
 export default class TabTwoScreen extends Component {
   state = {
     favsArray: [],
+    showModal:false,
   };
 
 
@@ -35,7 +37,21 @@ export default class TabTwoScreen extends Component {
 
     let logToConsole = (value: string) => {
       console.log(value);
+      // showModal = true
+      this.state.showModal = true
     };
+
+    // function WrapperComponent() {
+    //   return (
+    //     <View>
+    //       <Modal>
+    //         <View style={{ flex: 1 }}>
+    //           <Text>I am the modal content!</Text>
+    //         </View>
+    //       </Modal>
+    //     </View>
+    //   )
+    // }
 
     const items = favourites.map(function (item) {
       // return <Text style={styles.message}> {item} </Text>;
@@ -74,6 +90,15 @@ export default class TabTwoScreen extends Component {
         >
           {items}
         </ScrollView>
+
+        <View>
+          <Modal isVisible={this.state.showModal}>
+            <View style={{ flex: 1 }}>
+              <Text>I am the modal content!</Text>
+            </View>
+          </Modal>
+        </View>
+
       </View>
     );
   }
