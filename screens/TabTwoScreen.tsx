@@ -2,13 +2,15 @@ import React, { Component } from "react";
 import { Button, StyleSheet } from "react-native";
 import { Text, View } from "../components/Themed";
 import AsyncStorage from "@react-native-community/async-storage";
-import FavouriteItem from '../components/FavouriteItem'
+import FavouriteItem from "../components/FavouriteItem";
 import { ScrollView } from "react-native-gesture-handler";
 
 export default class TabTwoScreen extends Component {
   state = {
     favsArray: [],
   };
+
+
 
   render() {
     //some code here
@@ -31,10 +33,14 @@ export default class TabTwoScreen extends Component {
 
     let favourites = this.state.favsArray;
 
+    let logToConsole = (value: string) => {
+      console.log(value);
+    };
+
     const items = favourites.map(function (item) {
       // return <Text style={styles.message}> {item} </Text>;
-      return <FavouriteItem name={item} />
-
+      // return <FavouriteItem name={item} logThis={this.logToConsole} />;
+      return <FavouriteItem name={item} preview={logToConsole} />;
     });
 
     let hasFavourites = false;
@@ -45,6 +51,7 @@ export default class TabTwoScreen extends Component {
       hasFavourites = true;
     }
 
+    // this.logToConsole('hello ther ei am test')
     return (
       <View style={styles.container}>
         <View
@@ -62,12 +69,11 @@ export default class TabTwoScreen extends Component {
           style={{
             display: hasFavourites ? "flex" : "none",
             flex: 1,
-            alignSelf:'stretch'
+            alignSelf: "stretch",
           }}
         >
           {items}
         </ScrollView>
-
       </View>
     );
   }
@@ -81,7 +87,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    alignSelf: 'stretch',
+    alignSelf: "stretch",
 
     justifyContent: "center",
     alignItems: "center",

@@ -40,13 +40,13 @@ function WrapperComponent() {
   )
 }
 
-export default function FavouriteItem(name: any) {
+export default function FavouriteItem({name,preview}) {
   return (
     <View style={styles.container}>
-      <Text style={styles.name}>{name.name}</Text>
+      <Text style={styles.name}>{name}</Text>
 
       <View style={styles.btnContainer}>
-        <TouchableOpacity style={styles.viewBtn} onPress={onViewButtonPress}>
+        <TouchableOpacity style={styles.viewBtn} onPress={()=> preview('hehe')}>
           <Text style={styles.btnText}>View</Text>
         </TouchableOpacity>
 
