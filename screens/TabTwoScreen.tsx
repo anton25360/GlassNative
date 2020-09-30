@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
   },
 
   modalShadow: {
-    backgroundColor: 'rgba(52, 52, 52, 0.5)',
+    backgroundColor: "rgba(52, 52, 52, 0.5)",
 
     flex: 1,
   },
@@ -162,7 +162,22 @@ const styles = StyleSheet.create({
     marginHorizontal: "10%",
     marginVertical: "30%",
     backgroundColor: "blue",
+    // textAlign: 'center'
+    // justifyContent:'center'
+    alignItems:'center'
   },
-  closeModalBtn: {},
-  closeModalBtnText: {},
+  closeModalBtn: {
+    backgroundColor: "#ff3d54",
+    // flexGrow: 1,
+    padding: 10,
+    paddingHorizontal:40,
+    borderRadius: 3,
+    margin: 10,
+    marginLeft: 5,
+  },
+  closeModalBtnText: {
+    fontFamily: "productSans-regular",
+    fontSize: 20,
+    textAlign: "center",
+  },
 });
