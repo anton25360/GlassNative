@@ -3,6 +3,8 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import AsyncStorage from "@react-native-community/async-storage";
 import GradientButton from 'react-native-gradient-buttons';
+import Modal from 'react-native-modal';
+
 
 
 function onViewButtonPress() {
@@ -26,6 +28,18 @@ function onRemoveButtonPress(input: any) {
   });
 }
 
+function WrapperComponent() {
+  return (
+    <View>
+      <Modal>
+        <View style={{ flex: 1 }}>
+          <Text>I am the modal content!</Text>
+        </View>
+      </Modal>
+    </View>
+  )
+}
+
 export default function FavouriteItem(name: any) {
   return (
     <View style={styles.container}>
@@ -46,7 +60,7 @@ export default function FavouriteItem(name: any) {
         </TouchableOpacity>
       </View>
 
-      
+
 
     </View>
   );
