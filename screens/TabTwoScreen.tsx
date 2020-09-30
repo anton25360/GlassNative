@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { Button, StyleSheet, TouchableOpacity } from "react-native";
+import { Modal, StyleSheet, TouchableOpacity } from "react-native";
 import { Text, View } from "../components/Themed";
 import AsyncStorage from "@react-native-community/async-storage";
 import FavouriteItem from "../components/FavouriteItem";
 import { ScrollView } from "react-native-gesture-handler";
-import Modal from "react-native-modal";
+// import Modal from "react-native-modal";
 
 export default class TabTwoScreen extends Component {
   state = {
@@ -32,25 +32,23 @@ export default class TabTwoScreen extends Component {
       .then((value) => this.setState({ favsArray: value }))
       .catch((err) => console.log("AsyncStorageErr: " + err));
 
-    let favourites = this.state.favsArray;
+    // let favourites = this.state.favsArray;
     // <button onClick={() => this.setState({ count: this.state.count + 1 })}>
     // this.setState({favsArray:})
-
 
     // sets selected drink in state and opens the modal
     let showModal = (drinkNameObject: string) => {
       // this.state.currentDrink = Object.values(drinkNameObject)[0];
-      this.setState({currentDrink:Object.values(drinkNameObject)[0]})
+      this.setState({ currentDrink: Object.values(drinkNameObject)[0] });
 
       // this.state.showModal = true;
-      this.setState({showModal:true})
+      this.setState({ showModal: true });
     };
 
     //cloes the modal
     let closeModal = () => {
       // this.state.showModal = false;
-      this.setState({showModal:false})
-
+      this.setState({ showModal: false });
     };
 
     const items = this.state.favsArray.map(function (item) {
@@ -87,11 +85,12 @@ export default class TabTwoScreen extends Component {
           {items}
         </ScrollView>
 
-        <View>
+        {/* <View>
           <Modal
             isVisible={this.state.showModal}
-            backdropTransitionOutTiming={0}
+            // backdropTransitionOutTiming={0}
             hideModalContentWhileAnimating={true}
+            useNativeDriver={false}
             // animationIn={"slideInUp"}
             // animationOut={"slideOutUp"}
           >
@@ -108,7 +107,20 @@ export default class TabTwoScreen extends Component {
               </TouchableOpacity>
             </View>
           </Modal>
-        </View>
+        </View> */}
+
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={this.state.showModal}
+          onRequestClose={() => {
+            alert("Modal has been closed.");
+          }}
+        >
+          <View style={styles.modalContent}>
+            <Text>Hello i am modal</Text>
+          </View>
+        </Modal>
       </View>
     );
   }
@@ -125,6 +137,10 @@ const styles = StyleSheet.create({
     alignSelf: "stretch",
     justifyContent: "center",
     alignItems: "center",
+  },
+  modalContent: {
+    borderColor: 'red',
+    borderWidth: 2
   },
   closeModalBtn: {},
   closeModalBtnText: {},
