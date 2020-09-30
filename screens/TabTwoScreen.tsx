@@ -89,7 +89,8 @@ export default class TabTwoScreen extends Component {
         >
           <View style={styles.modalShadow}>
             <View style={styles.modalContent}>
-              <Text>Hello i am modal</Text>
+              <Text>{this.state.currentDrink}</Text>
+              
 
               <TouchableOpacity
                 style={styles.closeModalBtn}
