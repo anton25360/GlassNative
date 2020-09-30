@@ -9,7 +9,8 @@ import Modal from 'react-native-modal';
 export default class TabTwoScreen extends Component {
   state = {
     favsArray: [],
-    showModal:false,
+    showModal: false,
+    currentDrink:''
   };
 
 
@@ -35,39 +36,30 @@ export default class TabTwoScreen extends Component {
 
     let favourites = this.state.favsArray;
 
-    let logToConsole = (value: string) => {
-      console.log(value);
-      // showModal = true
-      this.state.showModal = true
-    };
+    let showModal = (drinkNameObject: string) => {
 
-    // function WrapperComponent() {
-    //   return (
-    //     <View>
-    //       <Modal>
-    //         <View style={{ flex: 1 }}>
-    //           <Text>I am the modal content!</Text>
-    //         </View>
-    //       </Modal>
-    //     </View>
-    //   )
-    // }
+      let drinkName = Object.values(drinkNameObject)[0];
+      this.state.showModal = true
+      console.log(drinkName);
+      this.state.currentDrink = drinkName
+      
+
+
+    };
 
     const items = favourites.map(function (item) {
       // return <Text style={styles.message}> {item} </Text>;
       // return <FavouriteItem name={item} logThis={this.logToConsole} />;
-      return <FavouriteItem name={item} preview={logToConsole} />;
+      return <FavouriteItem name={item} preview={showModal} />;
     });
 
     let hasFavourites = false;
-
     if (favourites.length == 0) {
       hasFavourites = false;
     } else {
       hasFavourites = true;
     }
 
-    // this.logToConsole('hello ther ei am test')
     return (
       <View style={styles.container}>
         <View
@@ -94,7 +86,7 @@ export default class TabTwoScreen extends Component {
         <View>
           <Modal isVisible={this.state.showModal}>
             <View style={{ flex: 1 }}>
-              <Text>I am the modal content!</Text>
+              <Text>{this.state.currentDrink}</Text>
             </View>
           </Modal>
         </View>

@@ -46,7 +46,7 @@ export default function FavouriteItem({name,preview}) {
       <Text style={styles.name}>{name}</Text>
 
       <View style={styles.btnContainer}>
-        <TouchableOpacity style={styles.viewBtn} onPress={()=> preview('hehe')}>
+        <TouchableOpacity style={styles.viewBtn} onPress={()=> preview({name})}>
           <Text style={styles.btnText}>View</Text>
         </TouchableOpacity>
 
