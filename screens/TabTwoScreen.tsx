@@ -33,24 +33,32 @@ export default class TabTwoScreen extends Component {
       .catch((err) => console.log("AsyncStorageErr: " + err));
 
     let favourites = this.state.favsArray;
+    // <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+    // this.setState({favsArray:})
+
 
     // sets selected drink in state and opens the modal
     let showModal = (drinkNameObject: string) => {
-      this.state.currentDrink = Object.values(drinkNameObject)[0];
-      this.state.showModal = true;
+      // this.state.currentDrink = Object.values(drinkNameObject)[0];
+      this.setState({currentDrink:Object.values(drinkNameObject)[0]})
+
+      // this.state.showModal = true;
+      this.setState({showModal:true})
     };
 
     //cloes the modal
     let closeModal = () => {
-      this.state.showModal = false;
+      // this.state.showModal = false;
+      this.setState({showModal:false})
+
     };
 
-    const items = favourites.map(function (item) {
+    const items = this.state.favsArray.map(function (item) {
       return <FavouriteItem name={item} preview={showModal} />;
     });
 
     let hasFavourites = false;
-    if (favourites.length == 0) {
+    if (this.state.favsArray.length == 0) {
       hasFavourites = false;
     } else {
       hasFavourites = true;
