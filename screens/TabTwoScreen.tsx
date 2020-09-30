@@ -127,7 +127,7 @@ export default class TabTwoScreen extends Component {
                   closeModal();
                 }}
               >
-                <Text style={styles.closeModalBtnText}>Remove</Text>
+                <Text style={styles.closeModalBtnText}>Close</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -156,15 +156,16 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   modalContent: {
-    borderColor: "red",
-    borderWidth: 2,
+    // borderColor: "red",
+    // borderWidth: 2,
     flex: 1,
     marginHorizontal: "10%",
     marginVertical: "30%",
-    backgroundColor: "blue",
+    // backgroundColor: "blue",
     // textAlign: 'center'
     // justifyContent:'center'
-    alignItems:'center'
+    alignItems: 'center',
+    borderRadius:3
   },
   closeModalBtn: {
     backgroundColor: "#ff3d54",
