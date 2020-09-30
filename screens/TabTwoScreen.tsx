@@ -1,19 +1,17 @@
 import React, { Component } from "react";
-import { Button, StyleSheet } from "react-native";
+import { Button, StyleSheet, TouchableOpacity } from "react-native";
 import { Text, View } from "../components/Themed";
 import AsyncStorage from "@react-native-community/async-storage";
 import FavouriteItem from "../components/FavouriteItem";
 import { ScrollView } from "react-native-gesture-handler";
-import Modal from 'react-native-modal';
+import Modal from "react-native-modal";
 
 export default class TabTwoScreen extends Component {
   state = {
     favsArray: [],
     showModal: false,
-    currentDrink:''
+    currentDrink: "",
   };
-
-
 
   render() {
     //some code here
@@ -36,20 +34,18 @@ export default class TabTwoScreen extends Component {
 
     let favourites = this.state.favsArray;
 
+    // sets selected drink in state and opens the modal
     let showModal = (drinkNameObject: string) => {
+      this.state.currentDrink = Object.values(drinkNameObject)[0];
+      this.state.showModal = true;
+    };
 
-      let drinkName = Object.values(drinkNameObject)[0];
-      this.state.showModal = true
-      console.log(drinkName);
-      this.state.currentDrink = drinkName
-      
-
-
+    //cloes the modal
+    let closeModal = () => {
+      this.state.showModal = false;
     };
 
     const items = favourites.map(function (item) {
-      // return <Text style={styles.message}> {item} </Text>;
-      // return <FavouriteItem name={item} logThis={this.logToConsole} />;
       return <FavouriteItem name={item} preview={showModal} />;
     });
 
@@ -84,13 +80,27 @@ export default class TabTwoScreen extends Component {
         </ScrollView>
 
         <View>
-          <Modal isVisible={this.state.showModal}>
+          <Modal
+            isVisible={this.state.showModal}
+            backdropTransitionOutTiming={0}
+            hideModalContentWhileAnimating={true}
+            // animationIn={"slideInUp"}
+            // animationOut={"slideOutUp"}
+          >
             <View style={{ flex: 1 }}>
               <Text>{this.state.currentDrink}</Text>
+
+              <TouchableOpacity
+                style={styles.closeModalBtn}
+                onPress={() => {
+                  closeModal();
+                }}
+              >
+                <Text style={styles.closeModalBtnText}>Remove</Text>
+              </TouchableOpacity>
             </View>
           </Modal>
         </View>
-
       </View>
     );
   }
@@ -105,8 +115,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignSelf: "stretch",
-
     justifyContent: "center",
     alignItems: "center",
   },
+  closeModalBtn: {},
+  closeModalBtnText: {},
 });
