@@ -4,66 +4,6 @@ import { Text, View } from "../components/Themed";
 import AsyncStorage from "@react-native-community/async-storage";
 import FavouriteItem from "../components/FavouriteItem";
 import { ScrollView } from "react-native-gesture-handler";
-// import Modal from "react-native-modal";
-
-//get cocktail data
-// let drinkData: object = {};
-// let ingredientsObject: object = {};
-
-// let getDataFromAPI = (input: string) => {
-//   fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + input)
-//     .then(function (data) {
-//       return data.json();
-//     })
-//     .then(function (data) {
-//       drinkData = data.drinks[0]; //gets 1st result, assigns it to global object
-//       // getIngredients();
-//     });
-// };
-
-// let getIngredients = () => {
-//   ingredientsObject = {
-//     1: drinkData.strMeasure1 + drinkData.strIngredient1,
-//     2: drinkData.strMeasure2 + drinkData.strIngredient2,
-//     3: drinkData.strMeasure3 + drinkData.strIngredient3,
-//     4: drinkData.strMeasure4 + drinkData.strIngredient4,
-//     5: drinkData.strMeasure5 + drinkData.strIngredient5,
-//     6: drinkData.strMeasure6 + drinkData.strIngredient6,
-//     7: drinkData.strMeasure7 + drinkData.strIngredient7,
-//     8: drinkData.strMeasure8 + drinkData.strIngredient8,
-//     9: drinkData.strMeasure9 + drinkData.strIngredient9,
-//     10: drinkData.strMeasure10 + drinkData.strIngredient10,
-//     11: drinkData.strMeasure11 + drinkData.strIngredient11,
-//     12: drinkData.strMeasure12 + drinkData.strIngredient12,
-//     13: drinkData.strMeasure13 + drinkData.strIngredient13,
-//     14: drinkData.strMeasure14 + drinkData.strIngredient14,
-//     15: drinkData.strMeasure15 + drinkData.strIngredient15,
-//   };
-
-//   let count = 1;
-//   let ingredientsArray = [];
-//   let ingredientsArrayFinal = [];
-
-//   //removes empty ingredients from object and puts existing ones in an array
-//   while (count != 16) {
-//     if (ingredientsObject[count] == 0) {
-//       delete ingredientsObject[count];
-//     } else {
-//       ingredientsArray.push(ingredientsObject[count]);
-//     }
-//     count++;
-//   }
-
-//   //removes the word null from the array (eg: for ingredients like orange juice)
-//   for (let index = 0; index < ingredientsArray.length; index++) {
-//     let element = "" + ingredientsArray[index];
-//     element = element.replace("null", "");
-//     ingredientsArrayFinal.push(element);
-//   }
-
-//   console.log(ingredientsArrayFinal);
-//   return ingredientsArrayFinal;
-// };
 
 export default class TabTwoScreen extends Component {
   state = {

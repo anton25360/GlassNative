@@ -80,7 +80,6 @@ export default class TabOneScreen extends Component {
     currentIntructions: "",
     currentIngredients: [],
     showResults: false,
-    
   };
 
   updateSearch = (search: string) => {
@@ -88,11 +87,13 @@ export default class TabOneScreen extends Component {
   };
 
   render() {
-
     let getDataFromAPI = () => {
       // let drinkData: object = {};
 
-      fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + this.state.search)
+      fetch(
+        "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" +
+          this.state.search
+      )
         .then(function (data) {
           return data.json();
         })
@@ -137,10 +138,10 @@ export default class TabOneScreen extends Component {
             element = element.replace("null", "");
             ingredientsArrayFinal.push(element);
           }
-        
+
           setDrinkState(
             drinkData.strDrink,
-            drinkData.strAlcoholic +' '+ drinkData.strCategory,
+            drinkData.strAlcoholic + " " + drinkData.strCategory,
             drinkData.strInstructions,
             ingredientsArrayFinal,
             drinkData.strDrinkThumb
@@ -150,7 +151,7 @@ export default class TabOneScreen extends Component {
 
     let setDrinkState = (
       name: string,
-      subtitle :string,
+      subtitle: string,
       instructions: string,
       ingredients: Array<string>,
       image: string
@@ -160,20 +161,22 @@ export default class TabOneScreen extends Component {
       this.setState({ currentIntructions: instructions });
       this.setState({ currentIngredients: ingredients });
       this.setState({ currentDrinkImage: image });
-      this.setState({showResults:true})
+      this.setState({ showResults: true });
     };
 
     let addToFavourites = () => {
-
       AsyncStorage.getItem("favouritesArray").then((favouritesArray) => {
         const favouritesArrayDecoded = favouritesArray
           ? JSON.parse(favouritesArray)
           : [];
-  
+
         if (favouritesArrayDecoded.includes(this.state.currentDrink)) {
-          Alert.alert('Error', "You've already added this to your Favourites!"); //no title
+          Alert.alert("Error", "You've already added this to your Favourites!"); //no title
         } else {
-          Alert.alert('Success', this.state.currentDrink + " has been added to your Favourites!"); //no title
+          Alert.alert(
+            "Success",
+            this.state.currentDrink + " has been added to your Favourites!"
+          ); //no title
           favouritesArrayDecoded.push(this.state.currentDrink);
           AsyncStorage.setItem(
             "favouritesArray",
@@ -181,7 +184,7 @@ export default class TabOneScreen extends Component {
           );
         }
       });
-    }
+    };
 
     const items = this.state.currentIngredients.map(function (item) {
       return <Text style={styles.ingredientsText}> {item} </Text>;
@@ -193,7 +196,7 @@ export default class TabOneScreen extends Component {
           placeholder="eg: Mojito"
           onChangeText={this.updateSearch}
           returnKeyType="search"
-          onSubmitEditing={()=> getDataFromAPI()}
+          onSubmitEditing={() => getDataFromAPI()}
           value={this.state.search}
         />
 
@@ -219,7 +222,9 @@ export default class TabOneScreen extends Component {
           >
             {/* drink name */}
             <Text style={styles.title}>{this.state.currentDrink}</Text>
-            <Text style={styles.titleSub}>{this.state.currentDrinkSubtitle}</Text>
+            <Text style={styles.titleSub}>
+              {this.state.currentDrinkSubtitle}
+            </Text>
 
             {/* ingrdients */}
             <Text style={styles.ingredientsTitle}>INGREDIENTS</Text>
@@ -227,7 +232,9 @@ export default class TabOneScreen extends Component {
 
             {/* instructions */}
             <Text style={styles.instructionsTitle}>INSTRUCTIONS</Text>
-            <Text style={styles.instructionsText}>{this.state.currentIntructions}</Text>
+            <Text style={styles.instructionsText}>
+              {this.state.currentIntructions}
+            </Text>
 
             {/* drink image */}
             <Image
@@ -246,7 +253,7 @@ export default class TabOneScreen extends Component {
                   backgroundColor: "#54bf77",
                 }}
                 raised={true}
-                onPress={()=> addToFavourites()}
+                onPress={() => addToFavourites()}
               />
             </View>
           </ScrollView>
