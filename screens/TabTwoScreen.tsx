@@ -12,6 +12,7 @@ export default class TabTwoScreen extends Component {
     currentDrink: "",
     currentIntructions: "",
     currentIngredients: [],
+    loadingData:false
   };
 
   render() {
@@ -82,6 +83,7 @@ export default class TabTwoScreen extends Component {
       this.setState({ currentDrink: name });
       this.setState({ currentIntructions: instructions });
       this.setState({ currentIngredients: ingredients });
+      this.setState({loadingData:false})
     };
 
     let getDataFromStorage = async (key: string) => {
@@ -103,8 +105,9 @@ export default class TabTwoScreen extends Component {
 
     // sets selected drink in state and opens the modal
     let showModal = (drinkNameObject: string) => {
-      let drinkName = Object.values(drinkNameObject)[0];
-      getDataFromAPI(drinkName);
+      this.setState({loadingData:true})
+      this.setState({currentDrink:'Loading'})
+      getDataFromAPI(Object.values(drinkNameObject)[0]);
       this.setState({ showModal: true });
     };
 
@@ -163,14 +166,20 @@ export default class TabTwoScreen extends Component {
           }}
         >
           <View style={styles.modalShadow}>
+          {/* display: hasFavourites ? "none" : "flex", */}
+
+          {/* <TouchableHighlight style={[styles.button,{ backgroundColor: '#f00'}]}  */}
+
             <View style={styles.modalContent}>
               <Text style={styles.title}>{this.state.currentDrink}</Text>
 
               {/* ingrdients */}
+              <View style={{ display: this.state.loadingData ? "none" : "flex" }}>
               {ingredients}
+              </View>
 
-              {/* instrictions */}
-              <Text style={styles.instructionsText}>
+              {/* instructions */}
+              <Text style={[styles.instructionsText,{display: this.state.loadingData ? "none" : "flex" }]}>
                 {this.state.currentIntructions}
               </Text>
 
@@ -215,7 +224,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 40,
     borderRadius: 3,
     marginTop: -5,
-    marginBottom:10
+    marginBottom:15
   },
   closeModalBtnText: {
     fontFamily: "productSans-regular",
@@ -237,6 +246,7 @@ const styles = StyleSheet.create({
     fontSize: 19,
     fontFamily: "productSans-regular",
     padding: 2,
+    textAlign: "center",
   },
 
   //instructions
