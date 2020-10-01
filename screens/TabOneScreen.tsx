@@ -197,8 +197,23 @@ export default class TabOneScreen extends Component {
     };
 
     let addToFavourites = () => {
-      console.log('added to favs!!');
-      //workd!
+
+      AsyncStorage.getItem("favouritesArray").then((favouritesArray) => {
+        const favouritesArrayDecoded = favouritesArray
+          ? JSON.parse(favouritesArray)
+          : [];
+  
+        if (favouritesArrayDecoded.includes(this.state.currentDrink)) {
+          Alert.alert('Error', "You've already added this to your Favourites!"); //no title
+        } else {
+          Alert.alert('Success', this.state.currentDrink + " has been added to your Favourites!"); //no title
+          favouritesArrayDecoded.push(this.state.currentDrink);
+          AsyncStorage.setItem(
+            "favouritesArray",
+            JSON.stringify(favouritesArrayDecoded)
+          );
+        }
+      });
     }
 
     let submitSearch = () => {
