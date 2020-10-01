@@ -138,10 +138,9 @@ export default class TabOneScreen extends Component {
             ingredientsArrayFinal.push(element);
           }
         
-          // {'drinkData.strAlcoholic' + " " + 'drinkData.strCategory'}
           setDrinkState(
             drinkData.strDrink,
-            'yo',
+            drinkData.strAlcoholic +' '+ drinkData.strCategory,
             drinkData.strInstructions,
             ingredientsArrayFinal,
             drinkData.strDrinkThumb
