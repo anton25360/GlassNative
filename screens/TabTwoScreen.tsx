@@ -75,18 +75,7 @@ export default class TabTwoScreen extends Component {
   };
 
   render() {
-    //puts drink data in state
-    let setDrinkState = (
-      name: string,
-      instructions: string,
-      ingredients: Array<string>
-    ) => {
-      this.setState({ currentDrink: name });
-      this.setState({ currentIntructions: instructions });
-      this.setState({ currentIngredients: ingredients });
-    };
-
-    // gets name, ingredients, instructions from drink name, puts them in state using the function above
+    // gets name, ingredients, instructions from drink name, puts them in state using the function below
     let getDataFromAPI = (input: string) => {
       // let drinkData: object = {};
 
@@ -144,6 +133,17 @@ export default class TabTwoScreen extends Component {
         });
     };
 
+    //puts drink data in state
+    let setDrinkState = (
+      name: string,
+      instructions: string,
+      ingredients: Array<string>
+    ) => {
+      this.setState({ currentDrink: name });
+      this.setState({ currentIntructions: instructions });
+      this.setState({ currentIngredients: ingredients });
+    };
+
     let getDataFromStorage = async (key: string) => {
       try {
         const data = await AsyncStorage.getItem(key);
@@ -180,7 +180,7 @@ export default class TabTwoScreen extends Component {
 
     //returns the ingredients
     let ingredients = this.state.currentIngredients.map(function (item) {
-      return <Text style={styles.ingredientsText}>{item}</Text>
+      return <Text style={styles.ingredientsText}>{item}</Text>;
     });
 
     //decides wether or not the 'you have no favs, message is shown
