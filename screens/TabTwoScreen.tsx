@@ -211,9 +211,11 @@ const styles = StyleSheet.create({
   },
   closeModalBtn: {
     backgroundColor: "#ff3d54",
-    padding: 9,
+    paddingVertical: 9,
     paddingHorizontal: 40,
     borderRadius: 3,
+    marginTop: -5,
+    marginBottom:10
   },
   closeModalBtnText: {
     fontFamily: "productSans-regular",
@@ -225,34 +227,24 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     fontFamily: "productSans-bold",
-    marginTop: 20,
+    marginTop: 10,
+    marginBottom:15,
     textAlign: "center",
   },
 
   // ingredients
-  ingredientsTitle: {
-    fontSize: 20,
-    fontFamily: "productSans-bold",
-    marginTop: 20,
-    paddingBottom: 3,
-  },
   ingredientsText: {
     fontSize: 19,
     fontFamily: "productSans-regular",
-    padding: 3,
+    padding: 2,
   },
 
   //instructions
-  instructionsTitle: {
-    fontSize: 20,
-    fontFamily: "productSans-bold",
-    marginTop: 20,
-  },
   instructionsText: {
-    fontSize: 19,
+    fontSize: 20,
     fontFamily: "productSans-regular",
     textAlign: "center",
     padding: 30,
-    marginTop: -25,
+    marginTop: -5,
   },
 });
