@@ -174,8 +174,13 @@ export default class TabTwoScreen extends Component {
     };
 
     //returns the favourites in custom component
-    let items = this.state.favsArray.map(function (item) {
+    let favouriteCards = this.state.favsArray.map(function (item) {
       return <FavouriteItem name={item} preview={showModal} />;
+    });
+
+    //returns the ingredients
+    let ingredients = this.state.currentIngredients.map(function (item) {
+      return <Text style={styles.ingredientsText}>{item}</Text>
     });
 
     //decides wether or not the 'you have no favs, message is shown
@@ -206,7 +211,7 @@ export default class TabTwoScreen extends Component {
             alignSelf: "stretch",
           }}
         >
-          {items}
+          {favouriteCards}
         </ScrollView>
 
         <Modal
@@ -222,18 +227,11 @@ export default class TabTwoScreen extends Component {
               <Text style={styles.title}>{this.state.currentDrink}</Text>
 
               {/* ingrdients */}
-              <Text style={styles.ingredientsTitle}>INGREDIENTS</Text>
-              {/* {items} */}
+              {ingredients}
 
               {/* instrictions */}
-              <Text style={styles.instructionsTitle}>INSTRUCTIONS</Text>
               <Text style={styles.instructionsText}>
-                {/* {drinkData.strInstructions} */}
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Officia voluptatibus assumenda dolorem deleniti dignissimos
-                iusto soluta inventore earum aliquid cum optio consequuntur,
-                dolores architecto asperiores a sapiente. Cupiditate, optio
-                itaque?
+                {this.state.currentIntructions}
               </Text>
 
               <TouchableOpacity
