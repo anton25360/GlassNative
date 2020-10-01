@@ -128,10 +128,10 @@ export default class TabOneScreen extends Component {
 
   render() {
 
-    let getDataFromAPI = (input: string) => {
+    let getDataFromAPI = () => {
       // let drinkData: object = {};
 
-      fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + input)
+      fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + this.state.search)
         .then(function (data) {
           return data.json();
         })
@@ -185,7 +185,6 @@ export default class TabOneScreen extends Component {
         });
     };
 
-    //puts drink data in state
     let setDrinkState = (
       name: string,
       instructions: string,
@@ -216,11 +215,7 @@ export default class TabOneScreen extends Component {
       });
     }
 
-    let submitSearch = () => {
-      console.log('searching....');
-      getDataFromAPI(this.state.search); //gets data from api using searched value, adds it to state
-      // console.log(this.state.currentDrink);
-    }
+
 
 
 
@@ -255,7 +250,7 @@ export default class TabOneScreen extends Component {
           placeholder="eg: Mojito"
           onChangeText={this.updateSearch}
           returnKeyType="search"
-          onSubmitEditing={()=> submitSearch()}
+          onSubmitEditing={()=> getDataFromAPI()}
           value={search}
         />
 
