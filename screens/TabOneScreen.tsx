@@ -215,23 +215,6 @@ export default class TabOneScreen extends Component {
       });
     }
 
-
-
-
-
-
-
-
-
-
-
-
-    
-
-    const { search } = this.state;
-    // let ingredientsList = getIngredients();
-    //used to return ingredients ^
-
     const items = this.state.currentIngredients.map(function (item) {
       return <Text style={styles.ingredientsText}> {item} </Text>;
     });
@@ -251,7 +234,7 @@ export default class TabOneScreen extends Component {
           onChangeText={this.updateSearch}
           returnKeyType="search"
           onSubmitEditing={()=> getDataFromAPI()}
-          value={search}
+          value={this.state.search}
         />
 
         <View
