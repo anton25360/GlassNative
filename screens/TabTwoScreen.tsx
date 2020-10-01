@@ -115,25 +115,21 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    alignSelf: "stretch",
-    justifyContent: "center",
-    alignItems: "center",
   },
 
   modalShadow: {
     backgroundColor: "rgba(52, 52, 52, 0.5)",
     flex: 1,
+    justifyContent:'center'
   },
   modalContent: {
-    flex: 1,
     marginHorizontal: "10%",
-    marginVertical: "30%",
     alignItems: 'center',
-    borderRadius:3
+    borderRadius: 3,
   },
   closeModalBtn: {
     backgroundColor: "#ff3d54",
-    padding: 10,
+    padding: 9,
     paddingHorizontal:40,
     borderRadius: 3,
   },
