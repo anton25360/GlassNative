@@ -1,15 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome";
 import AsyncStorage from "@react-native-community/async-storage";
-import GradientButton from 'react-native-gradient-buttons';
-// import Modal from 'react-native-modal';
-
-
-
-function onViewButtonPress() {
-  console.log("view drinks");
-}
 
 function onRemoveButtonPress(input: any) {
   let drinkName = Object.values(input)[0];
@@ -28,19 +19,7 @@ function onRemoveButtonPress(input: any) {
   });
 }
 
-// function WrapperComponent() {
-//   return (
-//     <View>
-//       <Modal>
-//         <View style={{ flex: 1 }}>
-//           <Text>I am the modal content!</Text>
-//         </View>
-//       </Modal>
-//     </View>
-//   )
-// }
-
-export default function FavouriteItem({name,preview}) {
+export default function FavouriteItem({name,preview}:any) {
   return (
     <View style={styles.container}>
       <Text style={styles.name}>{name}</Text>
@@ -59,8 +38,6 @@ export default function FavouriteItem({name,preview}) {
           <Text style={styles.btnText}>Remove</Text>
         </TouchableOpacity>
       </View>
-
-
 
     </View>
   );
