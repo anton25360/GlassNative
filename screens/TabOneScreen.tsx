@@ -213,7 +213,6 @@ export default class TabOneScreen extends Component {
         </View>
 
         {/* drink data goes here (container) */}
-        {/* <View style={styles.dataContainer}> */}
         <View style={{ display: this.state.showResults ? "flex" : "none" }}>
           <ScrollView
             contentContainerStyle={{ flexGrow: 1, alignItems: "center" }}
@@ -226,11 +225,9 @@ export default class TabOneScreen extends Component {
             <Text style={styles.ingredientsTitle}>INGREDIENTS</Text>
             {items}
 
-            {/* instrictions */}
+            {/* instructions */}
             <Text style={styles.instructionsTitle}>INSTRUCTIONS</Text>
-            <Text style={styles.instructionsText}>
-              {'drinkData.strInstructions'}
-            </Text>
+            <Text style={styles.instructionsText}>{this.state.currentIntructions}</Text>
 
             {/* drink image */}
             <Image
