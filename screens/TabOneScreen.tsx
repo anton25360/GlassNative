@@ -12,87 +12,92 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import AsyncStorage from "@react-native-community/async-storage";
 
 //get cocktail data
-let drinkData: object = {};
-let ingredientsObject: object = {};
+// let drinkData: object = {};
+// let ingredientsObject: object = {};
 
-let getDataFromAPI = (input: string) => {
-  fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + input)
-    .then(function (data) {
-      return data.json();
-    })
-    .then(function (data) {
-      drinkData = data.drinks[0]; //gets 1st result, assigns it to global object
-      // getIngredients();
-    });
-};
+// let getDataFromAPI = (input: string) => {
+//   fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + input)
+//     .then(function (data) {
+//       return data.json();
+//     })
+//     .then(function (data) {
+//       drinkData = data.drinks[0]; //gets 1st result, assigns it to global object
+//       // getIngredients();
+//     });
+// };
 
-let getIngredients = () => {
-  ingredientsObject = {
-    1: drinkData.strMeasure1 + drinkData.strIngredient1,
-    2: drinkData.strMeasure2 + drinkData.strIngredient2,
-    3: drinkData.strMeasure3 + drinkData.strIngredient3,
-    4: drinkData.strMeasure4 + drinkData.strIngredient4,
-    5: drinkData.strMeasure5 + drinkData.strIngredient5,
-    6: drinkData.strMeasure6 + drinkData.strIngredient6,
-    7: drinkData.strMeasure7 + drinkData.strIngredient7,
-    8: drinkData.strMeasure8 + drinkData.strIngredient8,
-    9: drinkData.strMeasure9 + drinkData.strIngredient9,
-    10: drinkData.strMeasure10 + drinkData.strIngredient10,
-    11: drinkData.strMeasure11 + drinkData.strIngredient11,
-    12: drinkData.strMeasure12 + drinkData.strIngredient12,
-    13: drinkData.strMeasure13 + drinkData.strIngredient13,
-    14: drinkData.strMeasure14 + drinkData.strIngredient14,
-    15: drinkData.strMeasure15 + drinkData.strIngredient15,
-  };
+// let getIngredients = () => {
+//   ingredientsObject = {
+//     1: drinkData.strMeasure1 + drinkData.strIngredient1,
+//     2: drinkData.strMeasure2 + drinkData.strIngredient2,
+//     3: drinkData.strMeasure3 + drinkData.strIngredient3,
+//     4: drinkData.strMeasure4 + drinkData.strIngredient4,
+//     5: drinkData.strMeasure5 + drinkData.strIngredient5,
+//     6: drinkData.strMeasure6 + drinkData.strIngredient6,
+//     7: drinkData.strMeasure7 + drinkData.strIngredient7,
+//     8: drinkData.strMeasure8 + drinkData.strIngredient8,
+//     9: drinkData.strMeasure9 + drinkData.strIngredient9,
+//     10: drinkData.strMeasure10 + drinkData.strIngredient10,
+//     11: drinkData.strMeasure11 + drinkData.strIngredient11,
+//     12: drinkData.strMeasure12 + drinkData.strIngredient12,
+//     13: drinkData.strMeasure13 + drinkData.strIngredient13,
+//     14: drinkData.strMeasure14 + drinkData.strIngredient14,
+//     15: drinkData.strMeasure15 + drinkData.strIngredient15,
+//   };
 
-  let count = 1;
-  let ingredientsArray = [];
-  let ingredientsArrayFinal = [];
+//   let count = 1;
+//   let ingredientsArray = [];
+//   let ingredientsArrayFinal = [];
 
-  //removes empty ingredients from object and puts existing ones in an array
-  while (count != 16) {
-    if (ingredientsObject[count] == 0) {
-      delete ingredientsObject[count];
-    } else {
-      ingredientsArray.push(ingredientsObject[count]);
-    }
-    count++;
-  }
+//   //removes empty ingredients from object and puts existing ones in an array
+//   while (count != 16) {
+//     if (ingredientsObject[count] == 0) {
+//       delete ingredientsObject[count];
+//     } else {
+//       ingredientsArray.push(ingredientsObject[count]);
+//     }
+//     count++;
+//   }
 
-  //removes the word null from the array (eg: for ingredients like orange juice)
-  for (let index = 0; index < ingredientsArray.length; index++) {
-    let element = "" + ingredientsArray[index];
-    element = element.replace("null", "");
-    ingredientsArrayFinal.push(element);
-  }
+//   //removes the word null from the array (eg: for ingredients like orange juice)
+//   for (let index = 0; index < ingredientsArray.length; index++) {
+//     let element = "" + ingredientsArray[index];
+//     element = element.replace("null", "");
+//     ingredientsArrayFinal.push(element);
+//   }
 
-  console.log(ingredientsArrayFinal);
-  return ingredientsArrayFinal;
-};
+//   console.log(ingredientsArrayFinal);
+//   return ingredientsArrayFinal;
+// };
 
 //start render
 export default class TabOneScreen extends Component {
   state = {
     search: "",
-    // showResults: false,
+    currentDrink: "",
+    currentIntructions: "",
+    currentIngredients: [],
   };
 
   updateSearch = (search: string) => {
     this.setState({ search });
   };
 
-  onSubmit = () => {
-    getDataFromAPI(this.state.search); //gets data from api
+  // onSubmit = () => {
+  //   getDataFromAPI(this.state.search); //gets data from api
 
-    var reset = () => {
-      this.setState({ state: this.state });
-    };
+  //   var reset = () => {
+  //     this.setState({ state: this.state });
+  //   };
 
-    setTimeout(function () {
-      reset();
-    }, 500);
-  };
+  //   setTimeout(function () {
+  //     reset();
+  //   }, 500);
+  // };
 
+  
+
+  //add to favs
   onButtonPress = async () => {
     let searchValue = drinkData.strDrink;
 
@@ -122,21 +127,112 @@ export default class TabOneScreen extends Component {
   };
 
   render() {
+
+    let getDataFromAPI = (input: string) => {
+      // let drinkData: object = {};
+
+      fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + input)
+        .then(function (data) {
+          return data.json();
+        })
+        .then(function (data) {
+          let drinkData = data.drinks[0]; //gets 1st result, assigns it to global object
+
+          let ingredientsObject = {
+            1: drinkData.strMeasure1 + drinkData.strIngredient1,
+            2: drinkData.strMeasure2 + drinkData.strIngredient2,
+            3: drinkData.strMeasure3 + drinkData.strIngredient3,
+            4: drinkData.strMeasure4 + drinkData.strIngredient4,
+            5: drinkData.strMeasure5 + drinkData.strIngredient5,
+            6: drinkData.strMeasure6 + drinkData.strIngredient6,
+            7: drinkData.strMeasure7 + drinkData.strIngredient7,
+            8: drinkData.strMeasure8 + drinkData.strIngredient8,
+            9: drinkData.strMeasure9 + drinkData.strIngredient9,
+            10: drinkData.strMeasure10 + drinkData.strIngredient10,
+            11: drinkData.strMeasure11 + drinkData.strIngredient11,
+            12: drinkData.strMeasure12 + drinkData.strIngredient12,
+            13: drinkData.strMeasure13 + drinkData.strIngredient13,
+            14: drinkData.strMeasure14 + drinkData.strIngredient14,
+            15: drinkData.strMeasure15 + drinkData.strIngredient15,
+          };
+
+          let count = 1;
+          let ingredientsArray = [];
+          let ingredientsArrayFinal = [];
+
+          //removes empty ingredients from object and puts existing ones in an array
+          while (count != 16) {
+            if (ingredientsObject[count] == 0) {
+              delete ingredientsObject[count];
+            } else {
+              ingredientsArray.push(ingredientsObject[count]);
+            }
+            count++;
+          }
+
+          //removes the word null from the array (eg: for ingredients like orange juice)
+          for (let index = 0; index < ingredientsArray.length; index++) {
+            let element = "" + ingredientsArray[index];
+            element = element.replace("null", "");
+            ingredientsArrayFinal.push(element);
+          }
+
+          setDrinkState(
+            drinkData.strDrink,
+            drinkData.strInstructions,
+            ingredientsArrayFinal
+          );
+        });
+    };
+
+    //puts drink data in state
+    let setDrinkState = (
+      name: string,
+      instructions: string,
+      ingredients: Array<string>
+    ) => {
+      this.setState({ currentDrink: name });
+      this.setState({ currentIntructions: instructions });
+      this.setState({ currentIngredients: ingredients });
+    };
+
+    let addToFavourites = () => {
+      console.log('added to favs!!');
+      //workd!
+    }
+
+    let submitSearch = () => {
+      console.log('searching....');
+      getDataFromAPI(this.state.search); //gets data from api using searched value, adds it to state
+      // console.log(this.state.currentDrink);
+    }
+
+
+
+
+
+
+
+
+
+
+    
+
     const { search } = this.state;
+    // let ingredientsList = getIngredients();
+    //used to return ingredients ^
 
-    let ingredientsList = getIngredients();
-
-    const items = ingredientsList.map(function (item) {
+    const items = this.state.currentIngredients.map(function (item) {
       return <Text style={styles.ingredientsText}> {item} </Text>;
     });
 
-    let showResults = false;
+    let showResults = true;
 
-    if (drinkData.strDrink == null) {
-      showResults = false;
-    } else {
-      showResults = true;
-    }
+    // if (drinkData.strDrink == null) {
+    //   showResults = false;
+    // } else {
+    //   showResults = true;
+    // }
 
     return (
       <View style={styles.container}>
@@ -144,7 +240,7 @@ export default class TabOneScreen extends Component {
           placeholder="eg: Mojito"
           onChangeText={this.updateSearch}
           returnKeyType="search"
-          onSubmitEditing={this.onSubmit}
+          onSubmitEditing={()=> submitSearch()}
           value={search}
         />
 
@@ -170,9 +266,9 @@ export default class TabOneScreen extends Component {
             contentContainerStyle={{ flexGrow: 1, alignItems: "center" }}
           >
             {/* drink name */}
-            <Text style={styles.title}>{drinkData.strDrink}</Text>
+            <Text style={styles.title}>{this.state.currentDrink}</Text>
             <Text style={styles.titleSub}>
-              {drinkData.strAlcoholic + " " + drinkData.strCategory}
+              {'drinkData.strAlcoholic' + " " + 'drinkData.strCategory'}
             </Text>
 
             {/* ingrdients */}
@@ -182,14 +278,14 @@ export default class TabOneScreen extends Component {
             {/* instrictions */}
             <Text style={styles.instructionsTitle}>INSTRUCTIONS</Text>
             <Text style={styles.instructionsText}>
-              {drinkData.strInstructions}
+              {'drinkData.strInstructions'}
             </Text>
 
             {/* drink image */}
-            <Image
+            {/* <Image
               style={styles.drinkImage}
               source={{ uri: drinkData.strDrinkThumb }}
-            ></Image>
+            ></Image> */}
 
             {/* add to favourites button */}
             <View style={styles.favouritesBtnContainer}>
@@ -202,7 +298,7 @@ export default class TabOneScreen extends Component {
                   backgroundColor: "#54bf77",
                 }}
                 raised={true}
-                onPress={this.onButtonPress}
+                onPress={()=> addToFavourites()}
               />
             </View>
           </ScrollView>
