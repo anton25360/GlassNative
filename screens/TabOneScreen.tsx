@@ -75,56 +75,16 @@ export default class TabOneScreen extends Component {
   state = {
     search: "",
     currentDrink: "",
+    currentDrinkSubtitle: "",
+    currentDrinkImage: "",
     currentIntructions: "",
     currentIngredients: [],
-    showResults:false,
+    showResults: false,
+    
   };
 
   updateSearch = (search: string) => {
     this.setState({ search });
-  };
-
-  // onSubmit = () => {
-  //   getDataFromAPI(this.state.search); //gets data from api
-
-  //   var reset = () => {
-  //     this.setState({ state: this.state });
-  //   };
-
-  //   setTimeout(function () {
-  //     reset();
-  //   }, 500);
-  // };
-
-  
-
-  //add to favs
-  onButtonPress = async () => {
-    let searchValue = drinkData.strDrink;
-
-    AsyncStorage.getItem("favouritesArray").then((favouritesArray) => {
-      const favouritesArrayDecoded = favouritesArray
-        ? JSON.parse(favouritesArray)
-        : [];
-
-      if (favouritesArrayDecoded.includes(searchValue)) {
-        Alert.alert(null, "You've already added this to your Favourites!"); //no title
-      } else {
-        Alert.alert(null, drinkData.strDrink + " has been added to your Favourites!"); //no title
-        favouritesArrayDecoded.push(searchValue);
-        AsyncStorage.setItem(
-          "favouritesArray",
-          JSON.stringify(favouritesArrayDecoded)
-        );
-      }
-      // favouritesArrayDecoded.push(searchValue);
-      // console.log(favouritesArrayDecoded);
-
-      // AsyncStorage.setItem(
-      //   "favouritesArray",
-      //   JSON.stringify(favouritesArrayDecoded)
-      // );
-    });
   };
 
   render() {
@@ -220,14 +180,6 @@ export default class TabOneScreen extends Component {
     const items = this.state.currentIngredients.map(function (item) {
       return <Text style={styles.ingredientsText}> {item} </Text>;
     });
-
-    // let showResults = true;
-
-    // if (this.state.currentDrink == null) {
-    //   showResults = true;
-    // } else {
-    //   showResults = false;
-    // }
 
     return (
       <View style={styles.container}>
@@ -356,7 +308,6 @@ const styles = StyleSheet.create({
     width: 270,
     height: 270,
     borderRadius: 5,
-    // marginBottom: 50,
   },
 
   //favs button
