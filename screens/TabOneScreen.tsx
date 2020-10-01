@@ -77,6 +77,7 @@ export default class TabOneScreen extends Component {
     currentDrink: "",
     currentIntructions: "",
     currentIngredients: [],
+    showResults:false,
   };
 
   updateSearch = (search: string) => {
@@ -193,6 +194,7 @@ export default class TabOneScreen extends Component {
       this.setState({ currentDrink: name });
       this.setState({ currentIntructions: instructions });
       this.setState({ currentIngredients: ingredients });
+      this.setState({showResults:true})
     };
 
     let addToFavourites = () => {
@@ -219,12 +221,12 @@ export default class TabOneScreen extends Component {
       return <Text style={styles.ingredientsText}> {item} </Text>;
     });
 
-    let showResults = true;
+    // let showResults = true;
 
-    // if (drinkData.strDrink == null) {
-    //   showResults = false;
-    // } else {
+    // if (this.state.currentDrink == null) {
     //   showResults = true;
+    // } else {
+    //   showResults = false;
     // }
 
     return (
@@ -239,7 +241,7 @@ export default class TabOneScreen extends Component {
 
         <View
           style={{
-            display: showResults ? "none" : "flex",
+            display: this.state.showResults ? "none" : "flex",
             flex: 1,
             justifyContent: "center",
             alignItems: "center",
@@ -254,7 +256,7 @@ export default class TabOneScreen extends Component {
 
         {/* drink data goes here (container) */}
         {/* <View style={styles.dataContainer}> */}
-        <View style={{ display: showResults ? "flex" : "none" }}>
+        <View style={{ display: this.state.showResults ? "flex" : "none" }}>
           <ScrollView
             contentContainerStyle={{ flexGrow: 1, alignItems: "center" }}
           >
