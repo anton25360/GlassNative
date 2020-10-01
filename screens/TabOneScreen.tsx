@@ -137,23 +137,30 @@ export default class TabOneScreen extends Component {
             element = element.replace("null", "");
             ingredientsArrayFinal.push(element);
           }
-
+        
+          // {'drinkData.strAlcoholic' + " " + 'drinkData.strCategory'}
           setDrinkState(
             drinkData.strDrink,
+            'yo',
             drinkData.strInstructions,
-            ingredientsArrayFinal
+            ingredientsArrayFinal,
+            drinkData.strDrinkThumb
           );
         });
     };
 
     let setDrinkState = (
       name: string,
+      subtitle :string,
       instructions: string,
-      ingredients: Array<string>
+      ingredients: Array<string>,
+      image: string
     ) => {
       this.setState({ currentDrink: name });
+      this.setState({ currentDrinkSubtitle: subtitle });
       this.setState({ currentIntructions: instructions });
       this.setState({ currentIngredients: ingredients });
+      this.setState({ currentDrinkImage: image });
       this.setState({showResults:true})
     };
 
@@ -214,9 +221,7 @@ export default class TabOneScreen extends Component {
           >
             {/* drink name */}
             <Text style={styles.title}>{this.state.currentDrink}</Text>
-            <Text style={styles.titleSub}>
-              {'drinkData.strAlcoholic' + " " + 'drinkData.strCategory'}
-            </Text>
+            <Text style={styles.titleSub}>{this.state.currentDrinkSubtitle}</Text>
 
             {/* ingrdients */}
             <Text style={styles.ingredientsTitle}>INGREDIENTS</Text>
@@ -229,10 +234,10 @@ export default class TabOneScreen extends Component {
             </Text>
 
             {/* drink image */}
-            {/* <Image
+            <Image
               style={styles.drinkImage}
-              source={{ uri: drinkData.strDrinkThumb }}
-            ></Image> */}
+              source={{ uri: this.state.currentDrinkImage }}
+            ></Image>
 
             {/* add to favourites button */}
             <View style={styles.favouritesBtnContainer}>
