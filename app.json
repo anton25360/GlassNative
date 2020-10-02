@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "GlassNative",
-    "slug": "GlassNative",
+    "name": "Glass",
+    "slug": "Glass",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -15,11 +15,13 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
+    },
+    "android": {
+      "package": "com.anton25360.glass",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
