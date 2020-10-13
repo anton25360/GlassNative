@@ -1,10 +1,5 @@
 import React, { Component } from "react";
-import {
-  Image,
-  StyleSheet,
-  ScrollView,
-  Alert,
-} from "react-native";
+import { Image, StyleSheet, ScrollView, Alert } from "react-native";
 import { Text, View } from "../components/Themed";
 import { SearchBar, Button } from "react-native-elements";
 import Icon from "react-native-vector-icons/FontAwesome";
@@ -125,9 +120,23 @@ export default class TabOneScreen extends Component {
       });
     };
 
+    let createStorage = () => {
+      AsyncStorage.getItem("favouritesArray").then((data) => {
+        let tempArray: Array<string> = [];
+
+        if (data == null) {
+          tempArray.push("Mojito");
+
+          AsyncStorage.setItem("favouritesArray", JSON.stringify(tempArray));
+        }
+      });
+    };
+
     const items = this.state.currentIngredients.map(function (item) {
       return <Text style={styles.ingredientsText}> {item} </Text>;
     });
+
+    createStorage();
 
     return (
       <View style={styles.container}>
